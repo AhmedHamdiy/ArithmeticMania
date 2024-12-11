@@ -1,7 +1,7 @@
 module mulitplierTB;
 
 reg signed [31:0] x, y;
-wire signed [63:0] product;
+reg signed [63:0] product;
 
 integer success_count = 0;
 integer failure_count = 0;
@@ -31,7 +31,7 @@ task check_adder_result;
     end
 endtask
 
-simpleMultiplier multiplier (
+boothMultiplier multiplier (
     .x(x),
     .y(y),
     .product(product)
@@ -65,14 +65,5 @@ initial begin
     // Test Case 8 : Multiplication to get max value.
     x = -65535; y = 65535;
     #1 check_adder_result(-4294836225, 8);
-
-
-
-
-
 end
-
-
-
-    
 endmodule 
