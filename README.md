@@ -13,6 +13,13 @@ Designing an ASIC FPU FOR FUN
                     <sub><b>shehab khaled</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/AhmedHamdiy">
+                    <img src="https://avatars.githubusercontent.com/u/111378492?v=4" width="100;" alt="AhmedHamdiy"/>
+                    <br />
+                    <sub><b>Ahmed Hamdy</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
