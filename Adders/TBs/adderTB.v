@@ -34,11 +34,12 @@ task reportResults;
     end
 endtask
 
-simpleAdder adder (
-    .x(x),
-    .y(y),
+rippleCarryAdder adder (
+    .a(x),
+    .b(y),
     .sum(sum),
-    .carry(carry_out),
+    .cin(1'b0),
+    .cout(carry_out),
     .overflow(overflow_flag)
 );
 
@@ -49,20 +50,41 @@ initial begin
     end
 end
 
-
-
 initial begin
+    // Test Case 1: Overflow of positive numbers
+    x = 2147483647; y = 1; #1
+    check_adder_result(-2147483648, 1); // Expected: Overflow
 
-    // You need minmial delay between the inputs and checking the output in combinational logic but not instantaneous check
-    // x = 0; y = 0; #1 //TestCase 1
-    // check_adder_result(0, 1);
+    // Test Case 2: Overflow of negative numbers
+    x = -2147483648; y = -1; #1
+    check_adder_result(2147483647, 2); // Expected: Overflow
 
+    // Test Case 3: Addition of a positive and a negative number
+    x = 100; y = -50; #1
+    check_adder_result(50, 3); // Expected: 50
+
+    // Test Case 4: Addition of two positive numbers
+    x = 200; y = 150; #1
+    check_adder_result(350, 4); // Expected: 350
+
+    // Test Case 5: Addition of two negative numbers
+    x = -100; y = -200; #1
+    check_adder_result(-300, 5); // Expected: -300
+
+    // Test Case 6: Additional random test case 1
+    x = 50; y = 75; #1
+    check_adder_result(125, 6); // Expected: 125
+
+    // Test Case 7: Additional random test case 2
+    x = -50; y = 50; #1
+    check_adder_result(0, 7); // Expected: 0
+
+    // Test Case 8: Additional random test case 3
+    x = -100; y = 100; #1
+    check_adder_result(0, 8); // Expected: 0
 
     reportResults();
 
 end
 
-
-
-    
 endmodule 

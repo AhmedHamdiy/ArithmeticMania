@@ -41,7 +41,7 @@ simpleMultiplier multiplier (
 initial begin
     // You need minmial delay between the inputs and checking the output in combinational logic but not instantaneous check
     
-          // Test Case 1: Multiplication of a positive and a negative number.
+        // Test Case 1: Multiplication of a positive and a negative number.
         x = 2; y = -5;
         #2 check_multiplier_result(-1*64'd10, 1);
 
