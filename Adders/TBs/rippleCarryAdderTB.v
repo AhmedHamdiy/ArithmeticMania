@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 
-module adderTB;
+module rippleCarryAdderTB;
 
 reg clk;
 
