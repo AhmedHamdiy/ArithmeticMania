@@ -1,120 +1,98 @@
 module floatingPointAdder (
-    input signed [31:0] x,   // Replaced A with x
-    input signed [31:0] y,   // Replaced B with y
-    output signed [31:0] result
+    input wire [31:0] x,
+    input wire [31:0] y,
+    output reg [31:0] result
   );
+  wire sign_x = x[31];
+  wire sign_y = y[31];
+  wire [7:0] exp_x = x[30:23];
+  wire [7:0] exp_y = y[30:23];
+  wire [22:0] mant_x = x[22:0];
+  wire [22:0] mant_y = y[22:0];
 
-  reg sign1, sign2;
-  reg [7:0] exponent1, exponent2;
-  reg signed [22:0] fraction1, fraction2;
-  reg signed [31:0] fraction1_32, fraction2_32, fraction1_32neg, fraction2_32neg;
-  wire signed [31:0] result_fraction_add, result_fraction_sub12, result_fraction_sub21;
-  reg signed [22:0] result_fraction;
-  reg signed [7:0] result_exponent;
-  reg result_sign;
-  reg [21:0] temp_fraction;
-  integer i;
-  wire cout, cin;
-  assign cin = 0;
-  reg signed [7:0] exponent_diff;
+  wire [24:0] full_mant_x = {1'b0, (exp_x == 0) ? 1'b0 : 1'b1, mant_x};
+  wire [24:0] full_mant_y = {1'b0, (exp_y == 0) ? 1'b0 : 1'b1, mant_y};
 
-  // Module instantiations for the carry bypass adder
-  carryLookAheadAdder fraction_add(
-                        .a(fraction1_32),
-                        .b(fraction2_32),
-                        .cin(cin),
-                        .sum(result_fraction_add),
+  wire [8:0] exp_diff = (exp_x > exp_y) ? (exp_x - exp_y) : (exp_y - exp_x);
+  wire [8:0] larger_exp = (exp_x > exp_y) ? exp_x : exp_y;
+
+  wire [24:0] shifted_mant = (exp_x > exp_y) ? (full_mant_y >> exp_diff) : (full_mant_x >> exp_diff);
+  wire [24:0] unshifted_mant = (exp_x > exp_y) ? full_mant_x : full_mant_y;
+
+  wire do_subtract = sign_x ^ sign_y;
+  wire [24:0] op_y = do_subtract ? (~shifted_mant + 1) : shifted_mant;
+
+  wire [24:0] sum;
+  wire cout, overflow;
+
+  carryLookAheadAdder #(
+                        .WIDTH(25)
+                      ) mantissa_adder (
+                        .a(unshifted_mant),
+                        .b(op_y),
+                        .cin(1'b0),
+                        .sum(sum),
                         .cout(cout),
-                        .overflow()
-                      );
-  carryLookAheadAdder fraction_sub12(
-                        .a(fraction1_32),
-                        .b(fraction2_32neg),
-                        .cin(cin),
-                        .sum(result_fraction_sub12),
-                        .cout(cout),
-                        .overflow()
-                      );
-  carryLookAheadAdder fraction_sub21(
-                        .a(fraction1_32neg),
-                        .b(fraction2_32),
-                        .cin(cin),
-                        .sum(result_fraction_sub21),
-                        .cout(cout),
-                        .overflow()
+                        .overflow(overflow)
                       );
 
-  always @*
+  reg [24:0] normalized_sum;
+  reg [7:0] final_exp;
+  reg final_sign;
+
+  always @(*)
   begin
-    sign1 = x[31];   // Changed A to x
-    sign2 = y[31];   // Changed B to y
-    exponent1 = x[30:23];   // Changed A to x
-    exponent2 = y[30:23];   // Changed B to y
-    fraction1 = x[22:0];   // Changed A to x
-    fraction2 = y[22:0];   // Changed B to y
-    exponent_diff = exponent1 - exponent2;
-
-    // Align exponents and adjust fractions accordingly
-    if (exponent_diff < 0)
+    if (exp_x == exp_y)
     begin
-      exponent_diff = -exponent_diff;
-      fraction1 = $signed(fraction1) >>> exponent_diff;
-      result_exponent = exponent2;
-      result_sign = sign2;
+      final_sign = (mant_x >= mant_y) ? sign_x : sign_y;
+      if (mant_x == mant_y && do_subtract)
+        final_sign = 1'b0;
     end
     else
     begin
-      fraction2 = $signed(fraction2) >>> exponent_diff;
-      result_exponent = exponent1;
-      result_sign = sign1;
+      final_sign = (exp_x > exp_y) ? sign_x : sign_y;
     end
 
-    // Convert fractions to 32-bit signed numbers with implicit leading 1
-    fraction1_32 = { {9{fraction1[22]}}, fraction1 };
-    fraction2_32 = { {9{fraction2[22]}}, fraction2 };
-
-    // Add or subtract fractions based on signs
-    if (sign1 == sign2)
+    if (exp_x == 0 && exp_y == 0)
     begin
-      result_fraction = result_fraction_add[22:0];
+      normalized_sum = sum;
+      final_exp = 0;
+      result = {final_sign, 8'h00, normalized_sum[22:0]};
     end
     else
     begin
-      if (fraction1 > fraction2)
-      begin
-        fraction2_32neg = -fraction2_32;
-        result_fraction = result_fraction_sub12[22:0];
-        result_sign = sign1;
-      end
-      else
-      begin
-        fraction1_32neg = -fraction1_32;
-        result_fraction = result_fraction_sub21[22:0];
-        result_sign = sign2;
-      end
-    end
-
-    // Normalize the result fraction
-    temp_fraction = result_fraction[21:0];
-    if (result_fraction == 23'b0)
-    begin
-      temp_fraction = 22'b0;
-    end
-    else
-    begin
-      for(i = 0; i < 22; i = i + 1)
-      begin
-        if(temp_fraction[21]==0)
+      casez (sum)
+        25'b1????????????????????????:
         begin
-          temp_fraction = temp_fraction << 1;
-          result_exponent = result_exponent - 1;
+          normalized_sum = sum >> 1;
+          final_exp = larger_exp + 1;
         end
-      end
+        25'b01???????????????????????:
+        begin
+          normalized_sum = sum;
+          final_exp = larger_exp;
+        end
+        default:
+        begin
+          normalized_sum = sum << 1;
+          final_exp = larger_exp - 1;
+        end
+      endcase
+
+      if ((exp_x == 8'hFF && mant_x != 0) || (exp_y == 8'hFF && mant_y != 0))
+        result = 32'h7FC00000;
+      else if (exp_x == 8'hFF)
+        result = {sign_x, 8'hFF, 23'b0};
+      else if (exp_y == 8'hFF)
+        result = {sign_y, 8'hFF, 23'b0};
+      else if (sum == 0)
+        result = 32'b0;
+      else if (final_exp == 0)
+        result = {final_sign, 8'h00, normalized_sum[22:0]};
+      else if (final_exp >= 8'hFF)
+        result = {final_sign, 8'hFF, 23'b0};
+      else
+        result = {final_sign, final_exp, normalized_sum[22:0]};
     end
-    result_fraction[21:0] = temp_fraction;
   end
-
-  // Construct the result
-  assign result = {result_sign, result_exponent, result_fraction};
-
 endmodule
