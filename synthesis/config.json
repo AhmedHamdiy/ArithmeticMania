@@ -1,8 +1,26 @@
 {
-  "DESIGN_NAME": "routing_lab",
-  "VERILOG_FILES": ["../Multipliers/RTL/simpleMultiplier.v"],
-  "CLOCK_PERIOD": 20,
-  "PDK": "sky130A",
-  "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
-  "SYNTH_STRATEGY": "AREA 0"
+  "meta": {
+    "version": 2,
+    "flow": [
+      "Yosys.Synthesis",
+      "OpenROAD.Floorplan",
+      "OpenROAD.GlobalPlacementSkipIO",
+      "OpenROAD.IOPlacement",
+      "OpenROAD.GlobalPlacement",
+      "OpenROAD.RepairDesignPostGPL",
+      "OpenROAD.DetailedPlacement",
+      "OpenROAD.CTS",
+      "OpenROAD.GlobalRouting",
+      "OpenROAD.DetailedRouting",
+      "OpenROAD.STAPrePNR",
+      "OpenROAD.RCX",
+      "OpenROAD.STAPostPNR"
+    ]
+  },
+  "DESIGN_NAME": "simpleMultiplier",
+  "VERILOG_FILES": ["./simpleMultiplier.v"],
+  "CLOCK_PERIOD": 20.0,
+  "SYNTH_STRATEGY": "DELAY 0",
+  "FP_CORE_UTIL": 0.6,
+  "FP_PDN_HORIZONTAL_LAYER": null
 }

@@ -2,7 +2,7 @@ module floatingPointMultiplierTB;
 
     reg signed [31:0] x, y;
     reg clk, rst, overflow;
-    wire signed [63:0] product;
+    wire signed [31:0] product;
 
     integer success_count = 0;
     integer failure_count = 0;
@@ -18,14 +18,16 @@ module floatingPointMultiplierTB;
 
     // Task to check multiplier result
     task check_multiplier_result;
-        input signed [63:0] expected;
+        input signed [31:0] expected;
         input integer test_case_num;
         input expected_overflow;
         begin
-            if (expected === product and expected_overflow === overflow) begin
+          if ((expected === product) && (expected_overflow === overflow)) 				begin
                 $display("TestCase#%0d: success", test_case_num);
                 success_count = success_count + 1;
-            end else begin
+            end 
+          else 
+            begin
                 $display("TestCase#%0d: failed with input %0d and %0d, Output %0d, and overflow status %0b", 
                          test_case_num, x, y, product, overflow);
                 failure_count = failure_count + 1;
@@ -53,36 +55,36 @@ module floatingPointMultiplierTB;
         rst = 1;
         #2 rst = 0;
         // Test Case 1: Multiplication of a positive and a negative number.
-        x = 2; y = -5;
-        #40 check_multiplier_result(-1*64'd10, 1, 0);
+        x = 32'h408a2000; y = 32'hc08a2000;
+        #50 check_multiplier_result(32'hc1950d08, 1, 0);
 
         // Test Case 2: Multiplication of two positive numbers.
-        x = 12; y = 5;
-        #40 check_multiplier_result(64'd60, 2, 0);
+        x = 32'h408aa000; y = 32'h408a2000;
+        #50 check_multiplier_result(32'h41959728, 2, 0);
 
         // Test Case 3: Multiplication of two negative numbers.
-        x = -20; y = -11;
-        #40 check_multiplier_result(64'd220, 3,1);
+        x = 32'hc28aa000; y = 32'hc10a2000;
+        #50 check_multiplier_result(32'h44159728, 3,0);
 
         // Test Case 4: Multiplication of a negative and a positive number.
-        x = -3; y = 21;
-        #40 check_multiplier_result(-1*64'd63, 4,0);
+        x = 32'hc28aa000; y = 32'h418aa000;
+        #50 check_multiplier_result(32'hc49621c8, 4,0);
 
         // Test Case 5: Multiplication by zero.
-        x = 100; y = 0;
-        #40 check_multiplier_result(64'd0, 5,0);
+        x = 32'h418aa000; y = 32'h00000000;
+        #50 check_multiplier_result(32'h00000000, 5,0);
 
         // Test Case 6: Multiplication by one.
-        x = 65535; y = 1;
-        #40 check_multiplier_result(64'd65535, 6,0);
+        x = 32'h418aa000; y = 32'h3f800000;
+        #50 check_multiplier_result(32'h418aa000, 6,0);
 
-        // Test Case 7: Multiplication by max value.
-        x = -4; y = -2147483648;
-        #40 check_multiplier_result(64'sd8589934592, 7,1);
+        // Test Case 7: Multiplication of random values.
+        x = 32'hb9807000; y = 32'h418aa000;
+        #50 check_multiplier_result(32'hbb8b194c, 7,0);
 
-        // Test Case 8: Multiplication of max value by max value.
-        x = 2147483647; y = -2147483648;
-        #40 check_multiplier_result(-1*64'sd4611686016279904256, 8,1);
+        // Test Case 8: Multiplication of random values.
+        x =  32'h79807000; y = 32'h518aa000;
+        #50 check_multiplier_result(32'h0b8b194c, 8,1);
 
         #2 report_results;
         $finish;
