@@ -1,0 +1,8 @@
+{
+  "DESIGN_NAME": "routing_lab",
+  "VERILOG_FILES": ["../Multipliers/RTL/simpleMultiplier.v"],
+  "CLOCK_PERIOD": 20,
+  "PDK": "sky130A",
+  "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+  "SYNTH_STRATEGY": "AREA 0"
+}

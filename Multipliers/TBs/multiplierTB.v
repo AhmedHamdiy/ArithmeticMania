@@ -25,7 +25,7 @@ task check_multiplier_result;
             $display("TestCase#%0d: success", test_case_num);
             success_count = success_count + 1;
         end else begin
-            $display("TestCase#%0d: failed with input %0d and %0d, Output %0d, Expected %0d", test_case_num, x, y, product,expected);
+            $display("TestCase#%0d: failed with input %0d and %0d, Output %0d", test_case_num, x, y, product);
             failure_count = failure_count + 1;
         end
     end
