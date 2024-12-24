@@ -1,0 +1,142 @@
+project open /home/asmaa/Desktop/VLSI_ZEFT
+# Loading project VLSI_ZEFT
+# Error opening /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdder.v
+# Path name '/home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdder.v' doesn't exist.
+# Compile of carryLookAheadTB.v was successful.
+# Compile of floatingPointAdderTB.v was successful.
+# Compile of carryLookAheadAdder.v was successful.
+# Compile of floatingPointAdder.v was successful.
+# 4 compiles, 0 failed with no errors.
+vsim work.carryLookAheadTB
+# vsim work.carryLookAheadTB 
+# Start time: 19:18:51 on Dec 24,2024
+# Loading work.carryLookAheadTB
+# Loading work.carryLookAheadAdder
+add wave -position insertpoint sim:/carryLookAheadTB/*
+run
+# TestCase#1: success
+# TestCase#2: success
+# TestCase#3: success
+# TestCase#4: success
+# TestCase#5: success
+# TestCase#6: success
+# TestCase#7: success
+# TestCase#8: success
+# Success Count: 8
+# Failure Count: 0
+vsim work.floatingPointAdderTB
+# End time: 19:19:08 on Dec 24,2024, Elapsed time: 0:00:17
+# Errors: 0, Warnings: 8
+# vsim work.floatingPointAdderTB 
+# Start time: 19:19:08 on Dec 24,2024
+# Loading work.floatingPointAdderTB
+# Loading work.floatingPointAdder
+# Loading work.carryLookAheadAdder
+run
+# TestCase#1: failed with x = 3f800000, y = 40000000, result = 00000000, overflow = 0
+# TestCase#2: success
+# TestCase#3: failed with x = bf800000, y = c0000000, result = 00000000, overflow = 0
+# TestCase#4: failed with x = 3f800000, y = 00000000, result = 00000000, overflow = 0
+# TestCase#5: failed with x = 7f7fffff, y = 7f7fffff, result = 00000000, overflow = 0
+# TestCase#6: failed with x = 00000001, y = 00000001, result = xxxxxxxx, overflow = 0
+# TestCase#7: failed with x = 7f800000, y = 3f800000, result = xxxxxxxx, overflow = 0
+# TestCase#8: failed with x = 7f800000, y = ff800000, result = xxxxxxxx, overflow = 0
+# Success Count: 1
+# Failure Count: 7
+# ** Note: $finish    : /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdderTB.v(118)
+#    Time: 18 ns  Iteration: 0  Instance: /floatingPointAdderTB
+# 1
+# Break in Module floatingPointAdderTB at /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdderTB.v line 118
+# Compile of floatingPointAdder.v was successful.
+vsim work.floatingPointAdderTB
+# End time: 19:22:46 on Dec 24,2024, Elapsed time: 0:03:38
+# Errors: 0, Warnings: 2
+# vsim work.floatingPointAdderTB 
+# Start time: 19:22:46 on Dec 24,2024
+# Loading work.floatingPointAdderTB
+# Loading work.floatingPointAdder
+# Loading work.carryLookAheadAdder
+run
+# TestCase#1: failed with x = 3f800000, y = 40000000, result = 00000000, overflow = 0
+# TestCase#2: success
+# TestCase#3: failed with x = bf800000, y = c0000000, result = 00000000, overflow = 0
+# TestCase#4: failed with x = 3f800000, y = 00000000, result = 00000000, overflow = 0
+# TestCase#5: failed with x = 7f7fffff, y = 7f7fffff, result = 00000000, overflow = 0
+# TestCase#6: failed with x = 00000001, y = 00000001, result = xxxxxxxx, overflow = 0
+# TestCase#7: failed with x = 7f800000, y = 3f800000, result = xxxxxxxx, overflow = 0
+# TestCase#8: failed with x = 7f800000, y = ff800000, result = xxxxxxxx, overflow = 0
+# Success Count: 1
+# Failure Count: 7
+# ** Note: $finish    : /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdderTB.v(118)
+#    Time: 18 ns  Iteration: 0  Instance: /floatingPointAdderTB
+# 1
+# Break in Module floatingPointAdderTB at /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdderTB.v line 118
+add wave -position insertpoint sim:/floatingPointAdderTB/#INITIAL#57/*
+run
+# Compile of floatingPointAdder.v was successful.
+# Compile of floatingPointAdderTB.v was successful.
+vsim work.floatingPointAdderTB
+# End time: 19:37:41 on Dec 24,2024, Elapsed time: 0:14:55
+# Errors: 0, Warnings: 3
+# vsim work.floatingPointAdderTB 
+# Start time: 19:37:41 on Dec 24,2024
+# Loading work.floatingPointAdderTB
+# Loading work.floatingPointAdder
+# Loading work.carryLookAheadAdder
+add wave -position insertpoint sim:/floatingPointAdderTB/*
+run
+# TestCase#1: failed with x = 3f800000, y = 40000000, result = 00000000, overflow = 0
+# TestCase#2: success
+# TestCase#3: failed with x = bf800000, y = c0000000, result = 00000000, overflow = 0
+# TestCase#4: failed with x = 3f800000, y = 00000000, result = 00000000, overflow = 0
+# TestCase#5: failed with x = 7f7fffff, y = 7f7fffff, result = 00000000, overflow = 0
+# TestCase#6: failed with x = 00000001, y = 00000001, result = xxxxxxxx, overflow = 0
+# TestCase#7: failed with x = 7f800000, y = 3f800000, result = xxxxxxxx, overflow = 0
+# TestCase#8: failed with x = 7f800000, y = ff800000, result = xxxxxxxx, overflow = 0
+# Success Count: 1
+# Failure Count: 7
+# ** Note: $finish    : /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdderTB.v(118)
+#    Time: 18 ns  Iteration: 0  Instance: /floatingPointAdderTB
+# 1
+# Break in Module floatingPointAdderTB at /home/asmaa/Desktop/ArithmeticMania/Adders/TBs/floatingPointAdderTB.v line 118
+run
+# Compile of carryBypassAdder.v failed with 1 errors.
+# Compile of floatingPointAdder.v was successful.
+# Compile of floatingPointAdderTB.v was successful.
+# Load canceled
+# Compile of carryLookAheadAdder.v was successful.
+# Compile of floatingPointAdder.v was successful.
+# Compile of floatingPointAdderTB.v was successful.
+# 3 compiles, 0 failed with no errors.
+vsim work.floatingPointAdderTB
+# End time: 19:46:41 on Dec 24,2024, Elapsed time: 0:09:00
+# Errors: 0, Warnings: 14
+# vsim work.floatingPointAdderTB 
+# Start time: 19:46:41 on Dec 24,2024
+# Loading work.floatingPointAdderTB
+# Loading work.floatingPointAdder
+# Loading work.carryLookAheadAdder
+vsim work.FloatingPointadder_tb
+# End time: 19:47:17 on Dec 24,2024, Elapsed time: 0:00:36
+# Errors: 0, Warnings: 1
+# vsim work.FloatingPointadder_tb 
+# Start time: 19:47:17 on Dec 24,2024
+# Loading work.FloatingPointadder_tb
+# Loading work.FloatingPointAdder
+# ** Error: (vsim-3033) Instantiation of 'CarryLookAheadAdder' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /FloatingPointadder_tb/u1 File: /home/asmaa/Desktop/ArithmeticMania/Adders/RTL/floatingPointAdder.v Line: 21
+#         Searched libraries:
+#             /home/asmaa/Desktop/work
+# ** Error: (vsim-3033) Instantiation of 'CarryLookAheadAdder' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /FloatingPointadder_tb/u1 File: /home/asmaa/Desktop/ArithmeticMania/Adders/RTL/floatingPointAdder.v Line: 29
+#         Searched libraries:
+#             /home/asmaa/Desktop/work
+# ** Error: (vsim-3033) Instantiation of 'CarryLookAheadAdder' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /FloatingPointadder_tb/u1 File: /home/asmaa/Desktop/ArithmeticMania/Adders/RTL/floatingPointAdder.v Line: 37
+#         Searched libraries:
+#             /home/asmaa/Desktop/work
+# Error loading design
+# End time: 19:47:17 on Dec 24,2024, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 1
+# Project file /home/asmaa/Desktop/VLSI_ZEFT.mpf is write protected, data cannot be saved.
+# Unable to save project.
