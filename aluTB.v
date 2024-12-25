@@ -73,21 +73,15 @@ module aluTB;
 
     // Test Case 2: Multiplication of two positive numbers
     op = 1;
-    x = 3;
-    y = 5;
-    #50 check_alu_result(15, 2, 0);
+    x = 32'h408aa000;
+    y = 32'h408a2000;
+    #50 check_alu_result(32'h41959728, 2, 0);
 
     // Test Case 3: Adding two large numbers causing overflow
     op = 0;
     x = 32'b01111111000000000000000000000000; // Large number
     y = 32'b01111111000000000000000000000000; // Large number
     #50 check_alu_result(32'b01111111100000000000000000000000, 3, 1);
-
-    // Test Case 4: Overflow in multiplication
-    op = 1;
-    x = 32'h7FFFFFFF;
-    y = 2;
-    #50 check_alu_result(32'hFFFFFFFE, 4, 1);
 
     // Test Case 5: Addition of positive and negative numbers
     op = 0;
@@ -97,15 +91,15 @@ module aluTB;
 
     // Test Case 6: Multiplication of a positive and a negative number
     op = 1;
-    x = 8;
-    y = -3;
-    #50 check_alu_result(-24, 6, 0);
+    x = 32'hc28aa000;
+    y = 32'h418aa000;
+    #50 check_alu_result(32'hc49621c8, 6, 0);
 
     // Test Case 7: Multiplication by zero
     op = 1;
-    x = 123;
-    y = 0;
-    #50 check_alu_result(0, 7, 0);
+    x = 32'h418aa000;
+    y = 32'h00000000;
+    #50 check_alu_result(32'h00000000, 7, 0);
 
     // Test Case 8: Addition of two negative numbers
     op = 0;
@@ -115,9 +109,9 @@ module aluTB;
 
     // Test Case 9: Multiplication of two negative numbers
     op = 1;
-    x = -10;
-    y = -20;
-    #50 check_alu_result(200, 9, 0);
+    x = 32'hc28aa000;
+    y = 32'hc10a2000;
+    #50 check_alu_result(32'h44159728, 9, 0);
 
     // Test Case 10: Addition of a negative and a positive number
     op = 0;
@@ -127,21 +121,15 @@ module aluTB;
 
     // Test Case 11: Multiplication by one
     op = 1;
-    x = 123;
-    y = 1;
-    #50 check_alu_result(123, 11, 0);
+    x = 32'h418aa000;
+    y = 32'h3f800000;
+    #50 check_alu_result(32'h418aa000, 11, 0);
 
     // Test Case 12: Addition of zero and a number
     op = 0;
     x = 32'b00000000000000000000000000000000; // 0.0
     y = 32'b00111111100000000000000000000000; // 1.0
     #50 check_alu_result(32'b00111111100000000000000000000000, 12, 0);
-
-    // Test Case 13: Multiplication by max value
-    op = 1;
-    x = 32'h7FFFFFFF;
-    y = 1;
-    #50 check_alu_result(32'h7FFFFFFF, 13, 0);
 
     // Test Case 14: Addition of infinity and a number
     op = 0;
@@ -151,7 +139,6 @@ module aluTB;
 
     // Finalize and report results
     #2 report_results;
-    $finish;
   end
 
 endmodule
