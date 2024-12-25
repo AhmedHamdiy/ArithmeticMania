@@ -3,7 +3,7 @@ module alu (
     input wire signed [31:0] x, y,
     input wire op,
     output wire overflow,
-    wire signed [31:0] result;
+    output wire signed [31:0] result
 );
     reg [31:0] reg_x;
     reg [31:0] reg_y;

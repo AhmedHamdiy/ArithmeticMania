@@ -1,0 +1,17 @@
+Starting…
+Running 'Yosys.Synthesis' at 'runs/RUN_2024-12-24_22-02-15/01-yosys-synthesis'…
+Logging subprocess to [repr.filename]'runs/RUN_2024-12-24_22-02-15/01-yosys-synthesis/yosys-synthesis.log'[/repr.filename]…
+Subprocess had a non-zero exit.
+Last 10 line(s):
+
+[INFO] Using generated ABC script '/media/ahmed/Programming/Study/1st term/VLSI/new/project/ArithmeticMania/Openlane-experiments/runs/RUN_2024-12-24_22-02-15/01-yosys-synthesis/DELAY_0.abc'…
+
+94. Executing ABC pass (technology mapping using ABC).
+
+94.1. Extracting gate netlist of module `\simpleMultiplier' to `/tmp/yosys-abc-Nxb6ZU/input.blif'..
+Extracted 6922 gates and 6986 wires to a netlist network with 64 inputs and 64 outputs.
+
+94.1.1. Executing ABC.
+ERROR: Can't open ABC output file `/tmp/yosys-abc-Nxb6ZU/output.blif'.
+
+Full log file: 'runs/RUN_2024-12-24_22-02-15/01-yosys-synthesis/yosys-synthesis.log'

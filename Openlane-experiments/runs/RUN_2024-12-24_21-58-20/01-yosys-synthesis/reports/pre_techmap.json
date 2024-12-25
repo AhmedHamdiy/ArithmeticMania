@@ -1,0 +1,53 @@
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /media/ahmed/Programming/Study/1st term/VLSI/new/project/ArithmeticMania/Openlane-experiments/runs/RUN_2024-12-24_21-58-20/tmp/38d5b4f6e7c14222b2dc82cf2cf6b139.lib ",
+   "modules": {
+      "\\simpleMultiplier": {
+         "num_wires":         6861,
+         "num_wire_bits":     6986,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 128,
+         "num_ports":         3,
+         "num_port_bits":     128,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         6922,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 2180,
+            "$_AND_": 886,
+            "$_NAND_": 390,
+            "$_NOR_": 191,
+            "$_NOT_": 87,
+            "$_ORNOT_": 49,
+            "$_OR_": 846,
+            "$_XNOR_": 544,
+            "$_XOR_": 1749
+         }
+      }
+   },
+      "design": {
+         "num_wires":         6861,
+         "num_wire_bits":     6986,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 128,
+         "num_ports":         3,
+         "num_port_bits":     128,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         6922,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 2180,
+            "$_AND_": 886,
+            "$_NAND_": 390,
+            "$_NOR_": 191,
+            "$_NOT_": 87,
+            "$_ORNOT_": 49,
+            "$_OR_": 846,
+            "$_XNOR_": 544,
+            "$_XOR_": 1749
+         }
+      }
+}
+

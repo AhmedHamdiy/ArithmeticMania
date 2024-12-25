@@ -1,6 +1,6 @@
 module oneCycleBoothMultiplier ( 
     input wire clk,  
-    input wire rst
+    input wire rst,
     input [31:0] x,
     input [31:0] y,
     output [63:0] product,

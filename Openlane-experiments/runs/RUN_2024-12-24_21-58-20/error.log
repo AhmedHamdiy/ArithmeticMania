@@ -1,0 +1,14 @@
+Subprocess had a non-zero exit.
+Last 10 line(s):
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/media/ahmed/Programming/Study/1st term/VLSI/new/project/ArithmeticMania/Openlane-experiments/runs/RUN_2024-12-24_21-58-20/tmp/38d5b4f6e7c14222b2dc82cf2cf6b139.lib" has 288 cells (87 skipped: 62 seq; 13 tri-state; 12 no func; 0 dont_use).  Time =     0.48 sec
+ABC: Memory =   18.36 MB. Time =     0.48 sec
+ABC: Warning: Detected 8 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: ERROR: Can't open ABC output file `/tmp/yosys-abc-w2koCI/output.blif'.
+
+Full log file: 'runs/RUN_2024-12-24_21-58-20/01-yosys-synthesis/yosys-synthesis.log'

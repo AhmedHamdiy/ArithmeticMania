@@ -1,5 +1,6 @@
 module mulitplierTB;
 
+reg clk;
 reg signed [31:0] x, y;
 wire signed [63:0] product;
 
@@ -32,6 +33,7 @@ task check_multiplier_result;
 endtask
 
 simpleMultiplier multiplier (
+    .clk(clk),
     .x(x),
     .y(y),
     .product(product)

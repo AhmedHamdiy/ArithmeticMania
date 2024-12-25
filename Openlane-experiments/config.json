@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "version": 2,
+    "flow": [
+      "Yosys.Synthesis",
+      "OpenROAD.Floorplan",
+      "OpenROAD.GlobalPlacementSkipIO",
+      "OpenROAD.IOPlacement",
+      "OpenROAD.GlobalPlacement",
+      "OpenROAD.RepairDesignPostGPL",
+      "OpenROAD.DetailedPlacement",
+      "OpenROAD.CTS",
+      "OpenROAD.GlobalRouting",
+      "OpenROAD.DetailedRouting",
+      "OpenROAD.STAPrePNR",
+      "OpenROAD.RCX",
+      "OpenROAD.STAPostPNR"
+    ]
+  },
+  "DESIGN_NAME": "simpleMultiplier",
+  "VERILOG_FILES": ["../Multipliers/RTL/simpleMultiplier.v"],
+  "CLOCK_PERIOD": 20.0,
+  "SYNTH_STRATEGY": "DELAY 0",
+  "FP_CORE_UTIL": 0.6,
+  "PNR_SDC_FILE": "./sdc/simple_mult.sdc",
+  "SYNTH_EXCLUDED_CELL_FILE": "./excluded_cells.txt"
+}

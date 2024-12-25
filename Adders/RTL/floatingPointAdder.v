@@ -1,7 +1,9 @@
 module floatingPointAdder (
+    input wire clk, rst,
     input wire [31:0] x,
     input wire [31:0] y,
-    output reg [31:0] result
+    output reg [31:0] result,
+    output reg overflow
   );
   wire sign_x = x[31];
   wire sign_y = y[31];
@@ -23,7 +25,7 @@ module floatingPointAdder (
   wire [24:0] op_y = do_subtract ? (~shifted_mant + 1) : shifted_mant;
 
   wire [24:0] sum;
-  wire cout, overflow;
+  wire cout, c_overflow;
 
   carryLookAheadAdder #(
                         .WIDTH(25)
@@ -33,7 +35,7 @@ module floatingPointAdder (
                         .cin(1'b0),
                         .sum(sum),
                         .cout(cout),
-                        .overflow(overflow)
+                        .overflow(c_overflow)
                       );
 
   reg [24:0] normalized_sum;
@@ -94,5 +96,6 @@ module floatingPointAdder (
       else
         result = {final_sign, final_exp, normalized_sum[22:0]};
     end
+     overflow=c_overflow;
   end
 endmodule
