@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/8bfc1754f8b6462ab69991bbfab2f349.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/8bfc1754f8b6462ab69991bbfab2f349.bb.v"

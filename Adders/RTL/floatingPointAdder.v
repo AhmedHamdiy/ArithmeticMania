@@ -25,7 +25,7 @@ module floatingPointAdder (
   wire [24:0] op_y = do_subtract ? (~shifted_mant + 1) : shifted_mant;
 
   wire [24:0] sum;
-  wire cout, c_overflow;
+  wire cout, carry_overflow;
 
   carryLookAheadAdder #(
                         .WIDTH(25)
@@ -35,7 +35,7 @@ module floatingPointAdder (
                         .cin(1'b0),
                         .sum(sum),
                         .cout(cout),
-                        .overflow(c_overflow)
+                        .overflow(carry_overflow)
                       );
 
   reg [24:0] normalized_sum;
@@ -60,6 +60,7 @@ module floatingPointAdder (
       normalized_sum = sum;
       final_exp = 0;
       result = {final_sign, 8'h00, normalized_sum[22:0]};
+      overflow = 1'b0; // No overflow in this case
     end
     else
     begin
@@ -82,19 +83,40 @@ module floatingPointAdder (
       endcase
 
       if ((exp_x == 8'hFF && mant_x != 0) || (exp_y == 8'hFF && mant_y != 0))
+      begin
         result = 32'h7FC00000;
+        overflow = 1'b0; // NaN is not an overflow
+      end
       else if (exp_x == 8'hFF)
+      begin
         result = {sign_x, 8'hFF, 23'b0};
+        overflow = 1'b0; // Infinity
+      end
       else if (exp_y == 8'hFF)
+      begin
         result = {sign_y, 8'hFF, 23'b0};
+        overflow = 1'b0; // Infinity
+      end
       else if (sum == 0)
+      begin
         result = 32'b0;
+        overflow = 1'b0; // Zero is not an overflow
+      end
       else if (final_exp == 0)
+      begin
         result = {final_sign, 8'h00, normalized_sum[22:0]};
+        overflow = 1'b0; // Subnormal number
+      end
       else if (final_exp >= 8'hFF)
+      begin
         result = {final_sign, 8'hFF, 23'b0};
+        overflow = 1'b1; // Overflow detected
+      end
       else
+      begin
         result = {final_sign, final_exp, normalized_sum[22:0]};
+        overflow = 1'b0; // No overflow
+      end
     end
      overflow=c_overflow;
   end

@@ -1,0 +1,22 @@
+[INFO PSM-0040] All shapes on net VPWR are connected.
+########## IR report #################
+Net              : VPWR
+Corner           : nom_tt_025C_1v80
+Supply voltage   : 1.80e+00 V
+Worstcase voltage: 1.80e+00 V
+Average voltage  : 1.80e+00 V
+Average IR drop  : 3.55e-04 V
+Worstcase IR drop: 1.33e-03 V
+Percentage drop  : 0.07 %
+######################################
+[INFO PSM-0040] All shapes on net VGND are connected.
+########## IR report #################
+Net              : VGND
+Corner           : nom_tt_025C_1v80
+Supply voltage   : 0.00e+00 V
+Worstcase voltage: 1.66e-03 V
+Average voltage  : 3.27e-04 V
+Average IR drop  : 3.27e-04 V
+Worstcase IR drop: 1.66e-03 V
+Percentage drop  : 0.09 %
+######################################

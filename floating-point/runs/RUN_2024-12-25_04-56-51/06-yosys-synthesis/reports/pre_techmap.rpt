@@ -1,0 +1,36 @@
+50. Printing statistics.
+
+=== floatingPointAdder ===
+
+   Number of wires:               1233
+   Number of wire bits:           1326
+   Number of public wires:           3
+   Number of public wire bits:      96
+   Number of ports:                  3
+   Number of port bits:             96
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1262
+     $_ANDNOT_                     287
+     $_AND_                         11
+     $_MUX_                        257
+     $_NAND_                        45
+     $_NOR_                         69
+     $_NOT_                        136
+     $_ORNOT_                       41
+     $_OR_                         284
+     $_XNOR_                        41
+     $_XOR_                         91
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+

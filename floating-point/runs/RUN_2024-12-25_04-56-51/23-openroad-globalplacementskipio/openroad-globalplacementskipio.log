@@ -1,0 +1,90 @@
+Reading OpenROAD database at '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/20-openroad-generatepdn/floatingPointAdder.odb'…
+Reading library file at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading design constraints file at './mult.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[WARNING STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.460  2.720 ) um
+[INFO GPL-0004] CoreBBox: (  5.520 10.880 ) ( 122.820 127.840 ) um
+[INFO GPL-0006] NumInstances:              1246
+[INFO GPL-0007] NumPlaceInstances:          980
+[INFO GPL-0008] NumFixedInstances:          266
+[INFO GPL-0009] NumDummyInstances:            0
+[INFO GPL-0010] NumNets:                   1044
+[INFO GPL-0011] NumPins:                   4129
+[INFO GPL-0012] DieBBox:  (  0.000  0.000 ) ( 128.505 139.225 ) um
+[INFO GPL-0013] CoreBBox: (  5.520 10.880 ) ( 122.820 127.840 ) um
+[INFO GPL-0016] CoreArea:             13719.408 um^2
+[INFO GPL-0017] NonPlaceInstsArea:      548.026 um^2
+[INFO GPL-0018] PlaceInstsArea:        6347.338 um^2
+[INFO GPL-0019] Util:                    48.190 %
+[INFO GPL-0020] StdInstsArea:          6347.338 um^2
+[INFO GPL-0021] MacroInstsArea:           0.000 um^2
+[INFO GPL-0031] FillerInit:NumGCells:      1180
+[INFO GPL-0032] FillerInit:NumGNets:       1044
+[INFO GPL-0033] FillerInit:NumGPins:       4129
+[INFO GPL-0023] TargetDensity:            0.579
+[INFO GPL-0024] AvrgPlaceInstArea:        6.477 um^2
+[INFO GPL-0025] IdealBinArea:            11.185 um^2
+[INFO GPL-0026] IdealBinCnt:               1226
+[INFO GPL-0027] TotalBinArea:         13719.408 um^2
+[INFO GPL-0028] BinCnt:        32     32
+[INFO GPL-0029] BinSize: (  3.666  3.655 )
+[INFO GPL-0030] NumBins: 1024
+[NesterovSolve] Iter:    1 overflow: 0.994 HPWL: 1917150
+[NesterovSolve] Iter:   10 overflow: 0.992 HPWL: 1324391
+[NesterovSolve] Iter:   20 overflow: 0.990 HPWL: 1320478
+[NesterovSolve] Iter:   30 overflow: 0.990 HPWL: 1320244
+[NesterovSolve] Iter:   40 overflow: 0.990 HPWL: 1320369
+[NesterovSolve] Iter:   50 overflow: 0.990 HPWL: 1320226
+[NesterovSolve] Iter:   60 overflow: 0.990 HPWL: 1320143
+[NesterovSolve] Iter:   70 overflow: 0.990 HPWL: 1320431
+[NesterovSolve] Iter:   80 overflow: 0.990 HPWL: 1321039
+[NesterovSolve] Iter:   90 overflow: 0.990 HPWL: 1322405
+[NesterovSolve] Iter:  100 overflow: 0.990 HPWL: 1324884
+[NesterovSolve] Iter:  110 overflow: 0.990 HPWL: 1330202
+[NesterovSolve] Iter:  120 overflow: 0.990 HPWL: 1344471
+[NesterovSolve] Iter:  130 overflow: 0.990 HPWL: 1409049
+[NesterovSolve] Iter:  140 overflow: 0.984 HPWL: 1672233
+[NesterovSolve] Iter:  150 overflow: 0.976 HPWL: 2144266
+[NesterovSolve] Iter:  160 overflow: 0.966 HPWL: 2768125
+[NesterovSolve] Iter:  170 overflow: 0.953 HPWL: 3513383
+[NesterovSolve] Iter:  180 overflow: 0.935 HPWL: 4176102
+[NesterovSolve] Iter:  190 overflow: 0.918 HPWL: 5019838
+[NesterovSolve] Iter:  200 overflow: 0.893 HPWL: 5950328
+[NesterovSolve] Iter:  210 overflow: 0.864 HPWL: 6881124
+[NesterovSolve] Iter:  220 overflow: 0.829 HPWL: 7945228
+[NesterovSolve] Iter:  230 overflow: 0.793 HPWL: 8950122
+[NesterovSolve] Iter:  240 overflow: 0.754 HPWL: 9960977
+[NesterovSolve] Iter:  250 overflow: 0.707 HPWL: 11033109
+[NesterovSolve] Iter:  260 overflow: 0.664 HPWL: 12084378
+[NesterovSolve] Iter:  270 overflow: 0.617 HPWL: 12992266
+[NesterovSolve] Iter:  280 overflow: 0.567 HPWL: 13981145
+[NesterovSolve] Iter:  290 overflow: 0.514 HPWL: 14977675
+[NesterovSolve] Iter:  300 overflow: 0.459 HPWL: 15805667
+[NesterovSolve] Iter:  310 overflow: 0.408 HPWL: 16525523
+[NesterovSolve] Iter:  320 overflow: 0.360 HPWL: 17177446
+[NesterovSolve] Iter:  330 overflow: 0.314 HPWL: 17637874
+[NesterovSolve] Iter:  340 overflow: 0.282 HPWL: 17930836
+[NesterovSolve] Iter:  350 overflow: 0.239 HPWL: 18152778
+[NesterovSolve] Iter:  360 overflow: 0.209 HPWL: 18371842
+[NesterovSolve] Iter:  370 overflow: 0.186 HPWL: 18580618
+[NesterovSolve] Iter:  380 overflow: 0.158 HPWL: 18744577
+[NesterovSolve] Iter:  390 overflow: 0.134 HPWL: 18878380
+[NesterovSolve] Iter:  400 overflow: 0.113 HPWL: 19013092
+[NesterovSolve] Finished with Overflow: 0.098449
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                86     322.81
+  Tap cell                                180     225.22
+  Inverter                                 28     105.10
+  Multi-Input combinational cell          952    6242.24
+  Total                                  1246    6895.36
+Writing OpenROAD database to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/23-openroad-globalplacementskipio/floatingPointAdder.odb'…
+Writing netlist to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/23-openroad-globalplacementskipio/floatingPointAdder.nl.v'…
+Writing powered netlist to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/23-openroad-globalplacementskipio/floatingPointAdder.pnl.v'…
+Writing layout to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/23-openroad-globalplacementskipio/floatingPointAdder.def'…
+Writing timing constraints to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/23-openroad-globalplacementskipio/floatingPointAdder.sdc'…

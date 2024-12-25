@@ -1,0 +1,40 @@
+%Warning-WIDTHEXPAND: floatingPointAdder.v:17:43: Operator COND expects 9 bits on the Conditional True, but Conditional True's VARREF 'exp_x' generates 8 bits.
+                                                : ... note: In instance 'floatingPointAdder'
+   17 |   wire [8:0] larger_exp = (exp_x > exp_y) ? exp_x : exp_y;
+      |                                           ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.018
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: floatingPointAdder.v:17:43: Operator COND expects 9 bits on the Conditional False, but Conditional False's VARREF 'exp_y' generates 8 bits.
+                                                : ... note: In instance 'floatingPointAdder'
+   17 |   wire [8:0] larger_exp = (exp_x > exp_y) ? exp_x : exp_y;
+      |                                           ^
+%Warning-WIDTHTRUNC: floatingPointAdder.v:68:21: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's ADD generates 32 or 9 bits.
+                                               : ... note: In instance 'floatingPointAdder'
+   68 |           final_exp = larger_exp + 1;
+      |                     ^
+%Warning-WIDTHTRUNC: floatingPointAdder.v:73:21: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'larger_exp' generates 9 bits.
+                                               : ... note: In instance 'floatingPointAdder'
+   73 |           final_exp = larger_exp;
+      |                     ^
+%Warning-WIDTHTRUNC: floatingPointAdder.v:78:21: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's SUB generates 32 or 9 bits.
+                                               : ... note: In instance 'floatingPointAdder'
+   78 |           final_exp = larger_exp - 1;
+      |                     ^
+%Warning-UNUSEDSIGNAL: floatingPointAdder.v:26:8: Signal is not used: 'cout'
+                                                : ... note: In instance 'floatingPointAdder'
+   26 |   wire cout, overflow;
+      |        ^~~~
+%Warning-UNUSEDSIGNAL: floatingPointAdder.v:26:14: Signal is not used: 'overflow'
+                                                 : ... note: In instance 'floatingPointAdder'
+   26 |   wire cout, overflow;
+      |              ^~~~~~~~
+%Warning-UNUSEDSIGNAL: floatingPointAdder.v:39:14: Bits of signal are not used: 'normalized_sum'[24:23]
+                                                 : ... note: In instance 'floatingPointAdder'
+   39 |   reg [24:0] normalized_sum;
+      |              ^~~~~~~~~~~~~~
+%Warning-UNOPTFLAT: carryLookAheadAdder.v:14:20: Signal unoptimizable: Circular combinational logic: 'floatingPointAdder.mantissa_adder.c'
+   14 |   wire [WIDTH:0]   c;  
+      |                    ^
+                    carryLookAheadAdder.v:14:20:      Example path: floatingPointAdder.mantissa_adder.c
+                    floatingPointAdder.v:33:30:      Example path: ASSIGNW
+                    carryLookAheadAdder.v:14:20:      Example path: floatingPointAdder.mantissa_adder.c

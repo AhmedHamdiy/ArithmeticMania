@@ -1,0 +1,14 @@
+set circuit1 [readnet spice /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/66-magic-spiceextraction/floatingPointAdder.spice]
+set circuit2 [readnet verilog /dev/null]
+puts "Reading SPICE netlist file '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice'..."
+readnet spice /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice $circuit2
+puts "Reading SPICE netlist file '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_12.spice'..."
+readnet spice /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_12.spice $circuit2
+puts "Reading SPICE netlist file '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_4.spice'..."
+readnet spice /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_4.spice $circuit2
+puts "Reading SPICE netlist file '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_8.spice'..."
+readnet spice /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_8.spice $circuit2
+puts "Reading SPICE netlist file '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice'..."
+readnet spice /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice $circuit2
+readnet verilog /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/51-openroad-fillinsertion/floatingPointAdder.pnl.v $circuit2
+lvs "$circuit1 floatingPointAdder" "$circuit2 floatingPointAdder" /nix/store/77i8hwhbwmpxl4nxkgfih8hjs3jb1wbd-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/netgen/setup.tcl /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/68-netgen-lvs/reports/lvs.netgen.rpt -blackbox -json

@@ -1,0 +1,1 @@
+openroad -exit -no_splash -metrics /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/23-openroad-globalplacementskipio/or_metrics_out.json /nix/store/77i8hwhbwmpxl4nxkgfih8hjs3jb1wbd-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/openroad/gpl.tcl
