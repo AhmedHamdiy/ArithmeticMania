@@ -24,8 +24,6 @@ module alu (
         .overflow(multiplier_overflow)
     );
     floatingPointAdder adder(
-        .clk(clk),
-        .rst(rst),
         .x(reg_x),
         .y(reg_y),
         .result(adder_result),

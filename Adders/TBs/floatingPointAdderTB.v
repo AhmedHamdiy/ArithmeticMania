@@ -41,7 +41,8 @@ module floatingPointAdderTB;
   floatingPointAdder adder (
                        .x(x),
                        .y(y),
-                       .result(sum)
+                       .result(sum),
+                       .overflow()
                      );
 
   initial
