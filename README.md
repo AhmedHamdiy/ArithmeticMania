@@ -14,17 +14,17 @@ Designing an ASIC FPU FOR FUN
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/AhmedHamdiy">
-                    <img src="https://avatars.githubusercontent.com/u/111378492?v=4" width="100;" alt="AhmedHamdiy"/>
-                    <br />
-                    <sub><b>Ahmed Hamdy</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/akramhany">
                     <img src="https://avatars.githubusercontent.com/u/109467185?v=4" width="100;" alt="akramhany"/>
                     <br />
                     <sub><b>Akram Hany</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/AhmedHamdiy">
+                    <img src="https://avatars.githubusercontent.com/u/111378492?v=4" width="100;" alt="AhmedHamdiy"/>
+                    <br />
+                    <sub><b>Ahmed Hamdy</b></sub>
                 </a>
             </td>
             <td align="center">
