@@ -83,6 +83,13 @@ module aluTB;
     y = 32'b01111111000000000000000000000000; // Large number
     #50 check_alu_result(32'b01111111100000000000000000000000, 3, 1);
 
+    // Test Case 4: Adding two NaNs
+    op = 0;
+    x = 32'b01111111110000000000000000000000; // NaN (Not a Number)
+    y = 32'b01111111110000000000000000000000; // NaN (Not a Number)
+    #50;
+    check_alu_result(32'b01111111110000000000000000000000, 4, 0); // NaN, No overflow
+
     // Test Case 5: Addition of positive and negative numbers
     op = 0;
     x = 32'b00111111100000000000000000000000; // 1.0
@@ -130,6 +137,11 @@ module aluTB;
     x = 32'b00000000000000000000000000000000; // 0.0
     y = 32'b00111111100000000000000000000000; // 1.0
     #50 check_alu_result(32'b00111111100000000000000000000000, 12, 0);
+
+    // Test Case 13: Multiplication of two large numbers causin an overflow.
+    x = 32'b01111111000000000000000000000000;
+    y = 32'b01111111000000000000000000000000;
+    #50 check_alu_result(32'b01111111100000000000000000000000, 13, 1);
 
     // Test Case 14: Addition of infinity and a number
     op = 0;
