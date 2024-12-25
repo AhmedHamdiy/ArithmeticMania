@@ -1,0 +1,1790 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: ./floatingPointAdder.v
+Parsing SystemVerilog input from `./floatingPointAdder.v' to AST representation.
+Storing AST representation for module `$abstract\floatingPointAdder'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: ./carryLookAheadAdder.v
+Parsing SystemVerilog input from `./carryLookAheadAdder.v' to AST representation.
+Storing AST representation for module `$abstract\carryLookAheadAdder'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+5. Executing AST frontend in derive mode using pre-parsed AST for module `\floatingPointAdder'.
+Generating RTLIL representation for module `\floatingPointAdder'.
+
+5.1. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+Parameter \WIDTH = 25
+
+5.2. Executing AST frontend in derive mode using pre-parsed AST for module `\carryLookAheadAdder'.
+Parameter \WIDTH = 25
+Generating RTLIL representation for module `$paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001'.
+
+5.3. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+Used module:     $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001
+
+5.4. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+Used module:     $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001
+Removing unused module `$abstract\carryLookAheadAdder'.
+Removing unused module `$abstract\floatingPointAdder'.
+Removed 2 unused modules.
+Renaming module floatingPointAdder to floatingPointAdder.
+
+6. Generating Graphviz representation of design.
+Writing dot description to `/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/06-yosys-synthesis/hierarchy.dot'.
+Dumping module floatingPointAdder to page 1.
+
+7. Executing TRIBUF pass.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+Used module:     $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001
+
+8.2. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+Used module:     $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001
+Removed 0 unused modules.
+
+9. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 10 switch rules as full_case in process $proc$./floatingPointAdder.v:43$23 in module floatingPointAdder.
+Removed a total of 0 dead cases.
+
+11. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 4 assignments to connections.
+
+12. Executing PROC_INIT pass (extract init attributes).
+
+13. Executing PROC_ARST pass (detect async resets in processes).
+
+14. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~10 debug messages>
+
+15. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+     1/13: $7\result[31:0]
+     2/13: $6\result[31:0]
+     3/13: $5\result[31:0]
+     4/13: $4\result[31:0]
+     5/13: $3\result[31:0]
+     6/13: $2\result[31:0]
+     7/13: $2\final_exp[7:0]
+     8/13: $2\normalized_sum[24:0]
+     9/13: $1\result[31:0]
+    10/13: $1\final_exp[7:0]
+    11/13: $1\normalized_sum[24:0]
+    12/13: $2\final_sign[0:0]
+    13/13: $1\final_sign[0:0]
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\floatingPointAdder.\result' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+No latch inferred for signal `\floatingPointAdder.\normalized_sum' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+No latch inferred for signal `\floatingPointAdder.\final_exp' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+No latch inferred for signal `\floatingPointAdder.\final_sign' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+
+17. Executing PROC_DFF pass (convert process syncs to FFs).
+
+18. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+19. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 10 empty switches in `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+Removing empty process `floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+Cleaned up 10 empty switches.
+
+20. Executing CHECK pass (checking for obvious problems).
+Checking module floatingPointAdder...
+Checking module $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001...
+Found and reported 0 problems.
+
+21. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~10 debug messages>
+Optimizing module $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001.
+
+22. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\carryLookAheadAdder\WIDTH=s32'00000000000000000000000000011001.
+<suppressed ~1 debug messages>
+
+23. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~2 debug messages>
+
+24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 5 unused cells and 104 unused wires.
+<suppressed ~12 debug messages>
+
+25. Executing OPT pass (performing simple optimizations).
+
+25.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+25.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+25.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $procmux$193: { 1'0 \sum [24:1] \sum } -> { 2'01 \sum [23:1] 1'0 \sum [23:0] }
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$108.
+    dead port 1/2 on $mux $procmux$111.
+    dead port 1/2 on $mux $procmux$114.
+    dead port 1/2 on $mux $procmux$117.
+    dead port 1/2 on $mux $procmux$120.
+    dead port 1/2 on $mux $procmux$123.
+    dead port 1/2 on $mux $procmux$129.
+    dead port 1/2 on $mux $procmux$132.
+    dead port 1/2 on $mux $procmux$135.
+    dead port 1/2 on $mux $procmux$138.
+    dead port 1/2 on $mux $procmux$141.
+    dead port 1/2 on $mux $procmux$147.
+    dead port 1/2 on $mux $procmux$150.
+    dead port 1/2 on $mux $procmux$153.
+    dead port 1/2 on $mux $procmux$156.
+    dead port 1/2 on $mux $procmux$162.
+    dead port 1/2 on $mux $procmux$165.
+    dead port 1/2 on $mux $procmux$168.
+    dead port 1/2 on $mux $procmux$174.
+    dead port 1/2 on $mux $procmux$177.
+    dead port 1/2 on $mux $procmux$183.
+    dead port 1/2 on $mux $procmux$197.
+    dead port 2/2 on $mux $procmux$212.
+Removed 23 multiplexer ports.
+<suppressed ~11 debug messages>
+
+25.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+25.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+25.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+25.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 0 unused cells and 34 unused wires.
+<suppressed ~3 debug messages>
+
+25.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+25.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+25.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+25.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+25.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+25.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+25.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+25.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+25.16. Finished OPT passes. (There is nothing left to do.)
+
+26. Executing FSM pass (extract and optimize FSM).
+
+26.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+26.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+26.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+26.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+26.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+26.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+26.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+26.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+27. Executing OPT pass (performing simple optimizations).
+
+27.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+27.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+27.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+27.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+27.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+27.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+27.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+27.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+27.9. Finished OPT passes. (There is nothing left to do.)
+
+28. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 25) from port A of cell floatingPointAdder.$shr$./floatingPointAdder.v:19$12 ($shr).
+Removed top 1 bits (of 25) from port A of cell floatingPointAdder.$shr$./floatingPointAdder.v:19$13 ($shr).
+Removed top 1 bits (of 25) from mux cell floatingPointAdder.$ternary$./floatingPointAdder.v:20$16 ($mux).
+Removed top 7 bits (of 32) from port A of cell floatingPointAdder.$not$./floatingPointAdder.v:23$19 ($not).
+Removed top 31 bits (of 32) from port B of cell floatingPointAdder.$add$./floatingPointAdder.v:23$20 ($add).
+Removed top 7 bits (of 32) from mux cell floatingPointAdder.$ternary$./floatingPointAdder.v:23$22 ($mux).
+Removed top 1 bits (of 32) from mux cell floatingPointAdder.$procmux$105 ($mux).
+Removed top 1 bits (of 9) from port A of cell floatingPointAdder.$add$./floatingPointAdder.v:68$35 ($add).
+Removed top 31 bits (of 32) from port B of cell floatingPointAdder.$add$./floatingPointAdder.v:68$35 ($add).
+Removed top 24 bits (of 32) from port Y of cell floatingPointAdder.$add$./floatingPointAdder.v:68$35 ($add).
+Removed top 1 bits (of 9) from port A of cell floatingPointAdder.$sub$./floatingPointAdder.v:78$37 ($sub).
+Removed top 31 bits (of 32) from port B of cell floatingPointAdder.$sub$./floatingPointAdder.v:78$37 ($sub).
+Removed top 24 bits (of 32) from port Y of cell floatingPointAdder.$sub$./floatingPointAdder.v:78$37 ($sub).
+Removed top 1 bits (of 32) from mux cell floatingPointAdder.$procmux$126 ($mux).
+Removed top 1 bits (of 2) from port B of cell floatingPointAdder.$procmux$187_CMP0 ($eq).
+Removed top 2 bits (of 25) from mux cell floatingPointAdder.$procmux$193 ($pmux).
+Removed top 1 bits (of 25) from port A of cell floatingPointAdder.$flatten\mantissa_adder.$xor$./carryLookAheadAdder.v:18$51 ($xor).
+Removed top 1 bits (of 25) from port A of cell floatingPointAdder.$flatten\mantissa_adder.$and$./carryLookAheadAdder.v:17$50 ($and).
+Removed top 1 bits (of 25) from port Y of cell floatingPointAdder.$flatten\mantissa_adder.$and$./carryLookAheadAdder.v:17$50 ($and).
+Removed top 1 bits (of 25) from port B of cell floatingPointAdder.$flatten\mantissa_adder.$and$./carryLookAheadAdder.v:17$50 ($and).
+Removed top 7 bits (of 32) from port Y of cell floatingPointAdder.$add$./floatingPointAdder.v:23$20 ($add).
+Removed top 7 bits (of 32) from port A of cell floatingPointAdder.$add$./floatingPointAdder.v:23$20 ($add).
+Removed top 7 bits (of 32) from port Y of cell floatingPointAdder.$not$./floatingPointAdder.v:23$19 ($not).
+Removed top 2 bits (of 25) from wire floatingPointAdder.$2\normalized_sum[24:0].
+Removed top 7 bits (of 32) from wire floatingPointAdder.$add$./floatingPointAdder.v:23$20_Y.
+Removed top 7 bits (of 32) from wire floatingPointAdder.$not$./floatingPointAdder.v:23$19_Y.
+Removed top 24 bits (of 32) from wire floatingPointAdder.$sub$./floatingPointAdder.v:78$37_Y.
+Removed top 1 bits (of 25) from wire floatingPointAdder.full_mant_x.
+Removed top 1 bits (of 9) from wire floatingPointAdder.larger_exp.
+Removed top 1 bits (of 25) from wire floatingPointAdder.unshifted_mant.
+
+29. Executing PEEPOPT pass (run peephole optimizers).
+
+30. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+31. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module floatingPointAdder:
+  creating $macc model for $add$./floatingPointAdder.v:23$20 ($add).
+  creating $macc model for $add$./floatingPointAdder.v:68$35 ($add).
+  creating $macc model for $sub$./floatingPointAdder.v:16$6 ($sub).
+  creating $macc model for $sub$./floatingPointAdder.v:16$7 ($sub).
+  creating $macc model for $sub$./floatingPointAdder.v:78$37 ($sub).
+  creating $alu model for $macc $sub$./floatingPointAdder.v:78$37.
+  creating $alu model for $macc $sub$./floatingPointAdder.v:16$7.
+  creating $alu model for $macc $sub$./floatingPointAdder.v:16$6.
+  creating $alu model for $macc $add$./floatingPointAdder.v:68$35.
+  creating $alu model for $macc $add$./floatingPointAdder.v:23$20.
+  creating $alu model for $ge$./floatingPointAdder.v:47$25 ($ge): new $alu
+  creating $alu model for $ge$./floatingPointAdder.v:92$49 ($ge): new $alu
+  creating $alu model for $gt$./floatingPointAdder.v:16$5 ($gt): merged with $sub$./floatingPointAdder.v:16$6.
+  creating $alu model for $eq$./floatingPointAdder.v:45$24 ($eq): merged with $sub$./floatingPointAdder.v:16$6.
+  creating $alu model for $eq$./floatingPointAdder.v:48$27 ($eq): merged with $ge$./floatingPointAdder.v:47$25.
+  creating $alu cell for $ge$./floatingPointAdder.v:92$49: $auto$alumacc.cc:485:replace_alu$227
+  creating $alu cell for $ge$./floatingPointAdder.v:47$25, $eq$./floatingPointAdder.v:48$27: $auto$alumacc.cc:485:replace_alu$240
+  creating $alu cell for $add$./floatingPointAdder.v:23$20: $auto$alumacc.cc:485:replace_alu$253
+  creating $alu cell for $add$./floatingPointAdder.v:68$35: $auto$alumacc.cc:485:replace_alu$256
+  creating $alu cell for $sub$./floatingPointAdder.v:16$6, $gt$./floatingPointAdder.v:16$5, $eq$./floatingPointAdder.v:45$24: $auto$alumacc.cc:485:replace_alu$259
+  creating $alu cell for $sub$./floatingPointAdder.v:16$7: $auto$alumacc.cc:485:replace_alu$270
+  creating $alu cell for $sub$./floatingPointAdder.v:78$37: $auto$alumacc.cc:485:replace_alu$273
+  created 7 $alu and 0 $macc cells.
+
+32. Executing SHARE pass (SAT-based resource sharing).
+Found 2 cells in module floatingPointAdder that may be considered for resource sharing.
+  Analyzing resource sharing options for $shr$./floatingPointAdder.v:19$13 ($shr):
+    Found 10 activation_patterns using ctrl signal { $procmux$187_CMP $auto$rtlil.cc:2493:Not$269 $auto$rtlil.cc:2497:ReduceOr$239 $eq$./floatingPointAdder.v:90$48_Y $eq$./floatingPointAdder.v:88$47_Y $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y \sum [24] }.
+    Found 1 candidates: $shr$./floatingPointAdder.v:19$12
+    Analyzing resource sharing with $shr$./floatingPointAdder.v:19$12 ($shr):
+      Found 10 activation_patterns using ctrl signal { $procmux$187_CMP $auto$rtlil.cc:2493:Not$269 $auto$rtlil.cc:2497:ReduceOr$239 $eq$./floatingPointAdder.v:90$48_Y $eq$./floatingPointAdder.v:88$47_Y $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y \sum [24] }.
+      Forbidden control signals for this pair of cells: { $procmux$187_CMP $ge$./floatingPointAdder.v:92$49_Y $eq$./floatingPointAdder.v:90$48_Y $eq$./floatingPointAdder.v:88$47_Y \sum [24] }
+      Activation pattern for cell $shr$./floatingPointAdder.v:19$13: { $auto$rtlil.cc:2493:Not$269 $logic_and$./floatingPointAdder.v:56$33_Y } = 2'01
+      Activation pattern for cell $shr$./floatingPointAdder.v:19$13: { $auto$rtlil.cc:2493:Not$269 $auto$rtlil.cc:2497:ReduceOr$239 $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y } = 6'000000
+      Activation pattern for cell $shr$./floatingPointAdder.v:19$13: { $auto$rtlil.cc:2493:Not$269 $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y } = 5'00000
+      Activation pattern for cell $shr$./floatingPointAdder.v:19$12: { $auto$rtlil.cc:2493:Not$269 $logic_and$./floatingPointAdder.v:56$33_Y } = 2'11
+      Activation pattern for cell $shr$./floatingPointAdder.v:19$12: { $auto$rtlil.cc:2493:Not$269 $auto$rtlil.cc:2497:ReduceOr$239 $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y } = 6'100000
+      Activation pattern for cell $shr$./floatingPointAdder.v:19$12: { $auto$rtlil.cc:2493:Not$269 $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y } = 5'10000
+      Size of SAT problem: 0 cells, 2886 variables, 7590 clauses
+      According to the SAT solver this pair of cells can be shared.
+      Activation signal for $shr$./floatingPointAdder.v:19$13: $auto$share.cc:987:make_cell_activation_logic$280
+      New cell: $auto$share.cc:667:make_supercell$287 ($shr)
+      New topology contains loops! Rolling back..
+  Analyzing resource sharing options for $shr$./floatingPointAdder.v:19$12 ($shr):
+    Found 10 activation_patterns using ctrl signal { $procmux$187_CMP $auto$rtlil.cc:2493:Not$269 $auto$rtlil.cc:2497:ReduceOr$239 $eq$./floatingPointAdder.v:90$48_Y $eq$./floatingPointAdder.v:88$47_Y $logic_or$./floatingPointAdder.v:82$44_Y $eq$./floatingPointAdder.v:82$41_Y $eq$./floatingPointAdder.v:82$38_Y $logic_and$./floatingPointAdder.v:56$33_Y \sum [24] }.
+    No candidates found.
+
+33. Executing OPT pass (performing simple optimizations).
+
+33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~5 debug messages>
+
+33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+33.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+33.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+33.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+33.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+33.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 1 unused cells and 11 unused wires.
+<suppressed ~2 debug messages>
+
+33.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+33.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+33.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+33.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+33.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+33.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+33.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+33.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+33.16. Finished OPT passes. (There is nothing left to do.)
+
+34. Executing MEMORY pass.
+
+34.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+34.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+34.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+34.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+34.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+34.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+34.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+34.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+34.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+34.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+35. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+36. Executing OPT pass (performing simple optimizations).
+
+36.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~15 debug messages>
+
+36.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+36.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+36.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~1 debug messages>
+
+36.5. Finished fast OPT passes.
+
+37. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+38. Executing OPT pass (performing simple optimizations).
+
+38.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+38.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+38.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~9 debug messages>
+
+38.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+38.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+38.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$186 in front of them:
+        $auto$alumacc.cc:485:replace_alu$256
+        $auto$alumacc.cc:485:replace_alu$273
+
+    Found cells that share an operand and can be merged by moving the $mux $ternary$./floatingPointAdder.v:19$14 in front of them:
+        $shr$./floatingPointAdder.v:19$13
+        $shr$./floatingPointAdder.v:19$12
+
+38.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+38.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+38.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~2 debug messages>
+
+38.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+38.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~10 debug messages>
+
+38.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+    Consolidated identical input bits for $mux cell $auto$opt_share.cc:244:merge_operators$299:
+      Old ports: A=8'11111111, B=8'00000001, Y=$auto$rtlil.cc:2628:Mux$300
+      New ports: A=1'1, B=1'0, Y=$auto$rtlil.cc:2628:Mux$300 [1]
+      New connections: { $auto$rtlil.cc:2628:Mux$300 [7:2] $auto$rtlil.cc:2628:Mux$300 [0] } = { $auto$rtlil.cc:2628:Mux$300 [1] $auto$rtlil.cc:2628:Mux$300 [1] $auto$rtlil.cc:2628:Mux$300 [1] $auto$rtlil.cc:2628:Mux$300 [1] $auto$rtlil.cc:2628:Mux$300 [1] $auto$rtlil.cc:2628:Mux$300 [1] 1'1 }
+    New ctrl vector for $pmux cell $procmux$186: $procmux$187_CMP
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 2 changes.
+
+38.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+38.14. Executing OPT_SHARE pass.
+
+38.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+38.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+38.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~1 debug messages>
+
+38.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+38.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~9 debug messages>
+
+38.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+38.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+38.22. Executing OPT_SHARE pass.
+
+38.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+38.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+38.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+38.26. Finished OPT passes. (There is nothing left to do.)
+
+39. Executing TECHMAP pass (map to technology primitives).
+
+39.1. Executing Verilog-2005 frontend: /nix/store/c26m31cifv9fyym8p72j6cj5ilqgnh2z-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/c26m31cifv9fyym8p72j6cj5ilqgnh2z-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+39.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$constmap:8c76313a637fe53cd546d375cb0d79a686d464db$paramod$8ab05e86541ea34bd4f6652ae74b36bc561b505e\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$a1bc51c02ce12ac21eb18988e83292af48ed7d72\_90_alu for cells of type $alu.
+Using template $paramod$4ccbe221165818e15f326ddee3d1183c7924e12f\_90_alu for cells of type $alu.
+Using template $paramod$c6885379b74fbbf6906b35106e386e521d86cbb2\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_or.
+Using template $paramod$448756c9a9dfaa49080ce4b90c6cc182883e181f\_90_alu for cells of type $alu.
+Using template $paramod$effdbe410bf3703e86b78efd494cb4fd1aaa75f9\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001001 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011001 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010111 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1596 debug messages>
+
+40. Executing OPT pass (performing simple optimizations).
+
+40.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~452 debug messages>
+
+40.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+<suppressed ~132 debug messages>
+Removed a total of 44 cells.
+
+40.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+40.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 83 unused cells and 402 unused wires.
+<suppressed ~84 debug messages>
+
+40.5. Finished fast OPT passes.
+
+41. Executing OPT pass (performing simple optimizations).
+
+41.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~3 debug messages>
+
+41.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+41.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+41.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 1 unused cells and 4 unused wires.
+<suppressed ~2 debug messages>
+
+41.5. Finished fast OPT passes.
+
+42. Executing ABC pass (technology mapping using ABC).
+
+42.1. Extracting gate netlist of module `\floatingPointAdder' to `<abc-temp-dir>/input.blif'..
+Extracted 1220 gates and 1286 wires to a netlist network with 64 inputs and 32 outputs.
+
+42.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+42.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       11
+ABC RESULTS:              XNOR cells:       42
+ABC RESULTS:               XOR cells:       91
+ABC RESULTS:              NAND cells:       45
+ABC RESULTS:             ORNOT cells:       41
+ABC RESULTS:               NOR cells:       69
+ABC RESULTS:               NOT cells:      137
+ABC RESULTS:                OR cells:      284
+ABC RESULTS:            ANDNOT cells:      287
+ABC RESULTS:               MUX cells:      257
+ABC RESULTS:        internal signals:     1190
+ABC RESULTS:           input signals:       64
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+43. Executing OPT pass (performing simple optimizations).
+
+43.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+<suppressed ~6 debug messages>
+
+43.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+43.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+43.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 1 unused cells and 334 unused wires.
+<suppressed ~11 debug messages>
+
+43.5. Finished fast OPT passes.
+
+44. Executing HIERARCHY pass (managing design hierarchy).
+
+44.1. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+
+44.2. Analyzing design hierarchy..
+Top module:  \floatingPointAdder
+Removed 0 unused modules.
+
+45. Executing CHECK pass (checking for obvious problems).
+Checking module floatingPointAdder...
+Found and reported 0 problems.
+
+46. Printing statistics.
+
+=== floatingPointAdder ===
+
+   Number of wires:               1247
+   Number of wire bits:           1565
+   Number of public wires:          17
+   Number of public wire bits:     335
+   Number of ports:                  3
+   Number of port bits:             96
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1263
+     $_ANDNOT_                     287
+     $_AND_                         11
+     $_MUX_                        257
+     $_NAND_                        45
+     $_NOR_                         69
+     $_NOT_                        136
+     $_ORNOT_                       41
+     $_OR_                         284
+     $_XNOR_                        41
+     $_XOR_                         91
+     $scopeinfo                      1
+
+47. Generating Graphviz representation of design.
+Writing dot description to `/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module floatingPointAdder to page 1.
+
+48. Executing OPT pass (performing simple optimizations).
+
+48.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+48.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+48.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \floatingPointAdder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+48.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \floatingPointAdder.
+Performed a total of 0 changes.
+
+48.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\floatingPointAdder'.
+Removed a total of 0 cells.
+
+48.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+48.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+
+48.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module floatingPointAdder.
+
+48.9. Finished OPT passes. (There is nothing left to do.)
+
+49. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 1 unused cells and 14 unused wires.
+<suppressed ~15 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/37464f1d97d741c4a3545e5e5892fb72.lib ",
+   "modules": {
+      "\\floatingPointAdder": {
+         "num_wires":         1233,
+         "num_wire_bits":     1326,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 96,
+         "num_ports":         3,
+         "num_port_bits":     96,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1262,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 287,
+            "$_AND_": 11,
+            "$_MUX_": 257,
+            "$_NAND_": 45,
+            "$_NOR_": 69,
+            "$_NOT_": 136,
+            "$_ORNOT_": 41,
+            "$_OR_": 284,
+            "$_XNOR_": 41,
+            "$_XOR_": 91
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1233,
+         "num_wire_bits":     1326,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 96,
+         "num_ports":         3,
+         "num_port_bits":     96,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1262,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 287,
+            "$_AND_": 11,
+            "$_MUX_": 257,
+            "$_NAND_": 45,
+            "$_NOR_": 69,
+            "$_NOT_": 136,
+            "$_ORNOT_": 41,
+            "$_OR_": 284,
+            "$_XNOR_": 41,
+            "$_XOR_": 91
+         }
+      }
+}
+
+50. Printing statistics.
+
+=== floatingPointAdder ===
+
+   Number of wires:               1233
+   Number of wire bits:           1326
+   Number of public wires:           3
+   Number of public wire bits:      96
+   Number of ports:                  3
+   Number of port bits:             96
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1262
+     $_ANDNOT_                     287
+     $_AND_                         11
+     $_MUX_                        257
+     $_NAND_                        45
+     $_NOR_                         69
+     $_NOT_                        136
+     $_ORNOT_                       41
+     $_OR_                         284
+     $_XNOR_                        41
+     $_XOR_                         91
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+51. Executing TECHMAP pass (map to technology primitives).
+
+51.1. Executing Verilog-2005 frontend: /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+51.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+52. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+53. Executing TECHMAP pass (map to technology primitives).
+
+53.1. Executing Verilog-2005 frontend: /home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+53.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+54. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+55. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+55.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\floatingPointAdder':
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/37464f1d97d741c4a3545e5e5892fb72.lib ",
+   "modules": {
+      "\\floatingPointAdder": {
+         "num_wires":         1233,
+         "num_wire_bits":     1326,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 96,
+         "num_ports":         3,
+         "num_port_bits":     96,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1262,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 287,
+            "$_AND_": 11,
+            "$_MUX_": 257,
+            "$_NAND_": 45,
+            "$_NOR_": 69,
+            "$_NOT_": 136,
+            "$_ORNOT_": 41,
+            "$_OR_": 284,
+            "$_XNOR_": 41,
+            "$_XOR_": 91
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1233,
+         "num_wire_bits":     1326,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 96,
+         "num_ports":         3,
+         "num_port_bits":     96,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1262,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 287,
+            "$_AND_": 11,
+            "$_MUX_": 257,
+            "$_NAND_": 45,
+            "$_NOR_": 69,
+            "$_NOT_": 136,
+            "$_ORNOT_": 41,
+            "$_OR_": 284,
+            "$_XNOR_": 41,
+            "$_XOR_": 91
+         }
+      }
+}
+
+56. Printing statistics.
+
+=== floatingPointAdder ===
+
+   Number of wires:               1233
+   Number of wire bits:           1326
+   Number of public wires:           3
+   Number of public wire bits:      96
+   Number of ports:                  3
+   Number of port bits:             96
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1262
+     $_ANDNOT_                     287
+     $_AND_                         11
+     $_MUX_                        257
+     $_NAND_                        45
+     $_NOR_                         69
+     $_NOT_                        136
+     $_ORNOT_                       41
+     $_OR_                         284
+     $_XNOR_                        41
+     $_XOR_                         91
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+[INFO] Using generated ABC script '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/06-yosys-synthesis/DELAY_0.abc'…
+
+57. Executing ABC pass (technology mapping using ABC).
+
+57.1. Extracting gate netlist of module `\floatingPointAdder' to `/tmp/yosys-abc-9q05KO/input.blif'..
+Extracted 1262 gates and 1326 wires to a netlist network with 64 inputs and 32 outputs.
+
+57.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-9q05KO/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-9q05KO/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-9q05KO/input.blif 
+ABC: + read_lib -w /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/37464f1d97d741c4a3545e5e5892fb72.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.08 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/37464f1d97d741c4a3545e5e5892fb72.lib" has 288 cells (87 skipped: 62 seq; 13 tri-state; 12 no func; 0 dont_use).  Time =     0.13 sec
+ABC: Memory =   18.36 MB. Time =     0.13 sec
+ABC: Warning: Detected 8 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/06-yosys-synthesis/DELAY_0.abc 
+ABC: Error: The network is combinational.
+ABC: The cell areas are multiplied by the factor: <num_fanins> ^ (0.90).
+ABC: The cell delays are multiplied by the factor: <num_fanins> ^ (0.20).
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =    980 (  2.9 %)   Cap =  8.2 ff (  5.3 %)   Area =     6347.34 ( 82.4 %)   Delay = 12528.42 ps  ( 21.8 %)               
+ABC: Path  0 --       8 : 0    6 pi                         A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  12.9 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     168 : 2    4 sky130_fd_sc_hd__nor2b_1   A =   6.26  Df = 200.4  -67.3 ps  S = 216.3 ps  Cin =  1.9 ff  Cout =  10.2 ff  Cmax =  82.4 ff  G =  497  
+ABC: Path  2 --     185 : 3    7 sky130_fd_sc_hd__o21ai_1   A =   5.00  Df = 499.7 -129.0 ps  S = 359.3 ps  Cin =  2.3 ff  Cout =  17.5 ff  Cmax =  80.6 ff  G =  739  
+ABC: Path  3 --     186 : 4   54 sky130_fd_sc_hd__a31oi_1   A =   6.26  Df =2583.4-1130.1 ps  S =2872.1 ps  Cin =  2.3 ff  Cout = 131.2 ff  Cmax =  65.9 ff  G = 5396  
+ABC: Path  4 --     189 : 3   21 sky130_fd_sc_hd__o21ai_1   A =   5.00  Df =3625.1-1200.9 ps  S = 940.1 ps  Cin =  2.3 ff  Cout =  50.5 ff  Cmax =  80.6 ff  G = 2138  
+ABC: Path  5 --     667 : 5    3 sky130_fd_sc_hd__o221ai_1  A =   8.76  Df =6336.1 -186.1 ps  S = 333.4 ps  Cin =  2.3 ff  Cout =   7.1 ff  Cmax =  70.5 ff  G =  300  
+ABC: Path  6 --     679 : 4    2 sky130_fd_sc_hd__a31oi_1   A =   6.26  Df =6613.4 -294.5 ps  S = 215.3 ps  Cin =  2.3 ff  Cout =   7.0 ff  Cmax =  65.9 ff  G =  287  
+ABC: Path  7 --     682 : 3    2 sky130_fd_sc_hd__o21bai_1  A =   7.51  Df =6730.6  -91.4 ps  S = 185.8 ps  Cin =  2.1 ff  Cout =   7.1 ff  Cmax =  77.8 ff  G =  325  
+ABC: Path  8 --     683 : 3    3 sky130_fd_sc_hd__a21oi_1   A =   5.00  Df =6959.1 -190.5 ps  S = 240.4 ps  Cin =  2.3 ff  Cout =   9.7 ff  Cmax =  74.2 ff  G =  396  
+ABC: Path  9 --     686 : 4    2 sky130_fd_sc_hd__o211ai_1  A =   7.51  Df =7087.3 -115.2 ps  S = 187.0 ps  Cin =  2.3 ff  Cout =   5.0 ff  Cmax =  74.2 ff  G =  206  
+ABC: Path 10 --     688 : 4    2 sky130_fd_sc_hd__o2bb2ai_1 A =   8.76  Df =7240.3 -119.7 ps  S = 181.5 ps  Cin =  2.4 ff  Cout =   4.8 ff  Cmax =  76.0 ff  G =  193  
+ABC: Path 11 --     690 : 4    3 sky130_fd_sc_hd__a31oi_1   A =   6.26  Df =7471.6 -203.6 ps  S = 269.2 ps  Cin =  2.3 ff  Cout =   9.4 ff  Cmax =  65.9 ff  G =  387  
+ABC: Path 12 --     692 : 5    2 sky130_fd_sc_hd__o221ai_1  A =   8.76  Df =7632.7 -167.1 ps  S = 201.3 ps  Cin =  2.3 ff  Cout =   4.8 ff  Cmax =  70.5 ff  G =  200  
+ABC: Path 13 --     694 : 3    2 sky130_fd_sc_hd__nand3_1   A =   5.00  Df =7738.5 -160.7 ps  S =  90.7 ps  Cin =  2.4 ff  Cout =   4.7 ff  Cmax = 146.5 ff  G =  196  
+ABC: Path 14 --     696 : 5    2 sky130_fd_sc_hd__o221ai_1  A =   8.76  Df =7859.8 -184.1 ps  S = 246.1 ps  Cin =  2.3 ff  Cout =   4.8 ff  Cmax =  70.5 ff  G =  200  
+ABC: Path 15 --     698 : 4    2 sky130_fd_sc_hd__a31oi_1   A =   6.26  Df =8075.0 -248.9 ps  S = 216.3 ps  Cin =  2.3 ff  Cout =   7.1 ff  Cmax =  65.9 ff  G =  295  
+ABC: Path 16 --     699 : 3    2 sky130_fd_sc_hd__o21bai_1  A =   7.51  Df =8191.5 -163.7 ps  S = 186.2 ps  Cin =  2.1 ff  Cout =   7.1 ff  Cmax =  77.8 ff  G =  322  
+ABC: Path 17 --     701 : 3    2 sky130_fd_sc_hd__a21oi_1   A =   5.00  Df =8386.6 -243.3 ps  S = 188.7 ps  Cin =  2.3 ff  Cout =   7.0 ff  Cmax =  74.2 ff  G =  287  
+ABC: Path 18 --     703 : 3    2 sky130_fd_sc_hd__o21bai_1  A =   7.51  Df =8497.5 -165.2 ps  S = 185.3 ps  Cin =  2.1 ff  Cout =   7.1 ff  Cmax =  77.8 ff  G =  320  
+ABC: Path 19 --     706 : 2    2 sky130_fd_sc_hd__nand2_1   A =   3.75  Df =8577.1 -160.3 ps  S =  65.8 ps  Cin =  2.3 ff  Cout =   4.3 ff  Cmax = 166.6 ff  G =  183  
+ABC: Path 20 --     708 : 5    2 sky130_fd_sc_hd__o221ai_1  A =   8.76  Df =8691.1 -187.6 ps  S = 242.4 ps  Cin =  2.3 ff  Cout =   4.8 ff  Cmax =  70.5 ff  G =  200  
+ABC: Path 21 --     710 : 4    2 sky130_fd_sc_hd__a31oi_1   A =   6.26  Df =8907.6 -255.7 ps  S = 216.9 ps  Cin =  2.3 ff  Cout =   7.2 ff  Cmax =  65.9 ff  G =  293  
+ABC: Path 22 --     712 : 3    3 sky130_fd_sc_hd__o21bai_1  A =   7.51  Df =9038.3 -152.7 ps  S = 229.6 ps  Cin =  2.1 ff  Cout =   9.5 ff  Cmax =  77.8 ff  G =  431  
+ABC: Path 23 --     716 : 2    2 sky130_fd_sc_hd__nand2_1   A =   3.75  Df =9131.6 -149.9 ps  S =  77.2 ps  Cin =  2.3 ff  Cout =   5.1 ff  Cmax = 166.6 ff  G =  211  
+ABC: Path 24 --     721 : 4   12 sky130_fd_sc_hd__o2bb2ai_1 A =   8.76  Df =9428.7 -180.4 ps  S = 597.9 ps  Cin =  2.4 ff  Cout =  28.9 ff  Cmax =  76.0 ff  G = 1175  
+ABC: Path 25 --     729 : 3   11 sky130_fd_sc_hd__nand3_1   A =   5.00  Df =9804.5 -228.4 ps  S = 309.0 ps  Cin =  2.4 ff  Cout =  27.0 ff  Cmax = 146.5 ff  G = 1107  
+ABC: Path 26 --     730 : 2   26 sky130_fd_sc_hd__nand2_1   A =   3.75  Df =10385.0 -378.1 ps  S = 616.0 ps  Cin =  2.3 ff  Cout =  68.4 ff  Cmax = 166.6 ff  G = 2812  
+ABC: Path 27 --     812 : 4    2 sky130_fd_sc_hd__o22ai_1   A =   6.26  Df =10582.2 -255.4 ps  S = 192.3 ps  Cin =  2.4 ff  Cout =   5.0 ff  Cmax =  73.3 ff  G =  202  
+ABC: Path 28 --     814 : 4    2 sky130_fd_sc_hd__o22ai_1   A =   6.26  Df =10756.2 -306.8 ps  S = 202.8 ps  Cin =  2.4 ff  Cout =   4.6 ff  Cmax =  73.3 ff  G =  192  
+ABC: Path 29 --     824 : 3    1 sky130_fd_sc_hd__nand3_1   A =   5.00  Df =10846.1 -314.7 ps  S =  97.8 ps  Cin =  2.4 ff  Cout =   2.6 ff  Cmax = 146.5 ff  G =  102  
+ABC: Path 30 --     830 : 4    1 sky130_fd_sc_hd__a211oi_1  A =   7.51  Df =11061.3 -287.1 ps  S = 176.6 ps  Cin =  2.4 ff  Cout =   2.5 ff  Cmax =  47.6 ff  G =  100  
+ABC: Path 31 --     831 : 3    2 sky130_fd_sc_hd__nand3_1   A =   5.00  Df =11172.6  -57.3 ps  S =  86.2 ps  Cin =  2.4 ff  Cout =   5.1 ff  Cmax = 146.5 ff  G =  203  
+ABC: Path 32 --     832 : 3   22 sky130_fd_sc_hd__a21oi_1   A =   5.00  Df =12031.6 -662.9 ps  S =1108.1 ps  Cin =  2.3 ff  Cout =  54.8 ff  Cmax =  74.2 ff  G = 2208  
+ABC: Path 33 --     904 : 4    1 sky130_fd_sc_hd__o22ai_1   A =   6.26  Df =12528.4 -498.2 ps  S = 720.0 ps  Cin =  2.4 ff  Cout =  33.4 ff  Cmax =  73.3 ff  G = 1412  
+ABC: Start-point = pi7 (\x [28]).  End-point = po6 (\result [6]).
+ABC: netlist                       : i/o =   64/   32  lat =    0  nd =   980  edge =   3149  area =2334.68  delay =4167.98  lev = 47
+ABC: + write_blif /tmp/yosys-abc-9q05KO/output.blif 
+
+57.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__o22a_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a311o_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a22o_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__mux4_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a32o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand4b_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4b_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a41o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or2_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or3_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__a31o_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o32a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__and2_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a221o_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o32ai_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__a222oi_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_1 cells:       31
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__and4_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o311a_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_1 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2oi_1 cells:       18
+ABC RESULTS:   sky130_fd_sc_hd__a21o_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:       75
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:       31
+ABC RESULTS:   sky130_fd_sc_hd__nand4bb_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_1 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__o221a_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       30
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__nor2b_1 cells:       23
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:       35
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:       29
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:       81
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:       59
+ABC RESULTS:   sky130_fd_sc_hd__o41ai_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__a211o_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__a41oi_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:       30
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:       23
+ABC RESULTS:   sky130_fd_sc_hd__o2111a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:       77
+ABC RESULTS:   sky130_fd_sc_hd__o31a_1 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_1 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__mux2i_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_1 cells:       90
+ABC RESULTS:   sky130_fd_sc_hd__o211a_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_1 cells:       24
+ABC RESULTS:        internal signals:     1230
+ABC RESULTS:           input signals:       64
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+58. Executing SETUNDEF pass (replace undef values with defined constants).
+
+59. Executing HILOMAP pass (mapping to constant drivers).
+
+60. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+61. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \floatingPointAdder..
+Removed 0 unused cells and 1326 unused wires.
+<suppressed ~1 debug messages>
+
+62. Executing INSBUF pass (insert buffer cells for connected wires).
+
+63. Executing CHECK pass (checking for obvious problems).
+Checking module floatingPointAdder...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/tmp/37464f1d97d741c4a3545e5e5892fb72.lib ",
+   "modules": {
+      "\\floatingPointAdder": {
+         "num_wires":         951,
+         "num_wire_bits":     1044,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 96,
+         "num_ports":         3,
+         "num_port_bits":     96,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         980,
+         "area":              6347.337600,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_1": 1,
+            "sky130_fd_sc_hd__a211o_1": 9,
+            "sky130_fd_sc_hd__a211oi_1": 6,
+            "sky130_fd_sc_hd__a21boi_1": 9,
+            "sky130_fd_sc_hd__a21o_1": 9,
+            "sky130_fd_sc_hd__a21oi_1": 59,
+            "sky130_fd_sc_hd__a221o_1": 5,
+            "sky130_fd_sc_hd__a221oi_1": 2,
+            "sky130_fd_sc_hd__a222oi_1": 5,
+            "sky130_fd_sc_hd__a22o_1": 1,
+            "sky130_fd_sc_hd__a22oi_1": 7,
+            "sky130_fd_sc_hd__a2bb2oi_1": 18,
+            "sky130_fd_sc_hd__a311o_1": 1,
+            "sky130_fd_sc_hd__a311oi_1": 3,
+            "sky130_fd_sc_hd__a31o_1": 6,
+            "sky130_fd_sc_hd__a31oi_1": 29,
+            "sky130_fd_sc_hd__a32o_1": 2,
+            "sky130_fd_sc_hd__a32oi_1": 5,
+            "sky130_fd_sc_hd__a41o_1": 2,
+            "sky130_fd_sc_hd__a41oi_1": 4,
+            "sky130_fd_sc_hd__and2_1": 6,
+            "sky130_fd_sc_hd__and3_1": 13,
+            "sky130_fd_sc_hd__and4_1": 3,
+            "sky130_fd_sc_hd__clkinv_1": 28,
+            "sky130_fd_sc_hd__mux2_1": 4,
+            "sky130_fd_sc_hd__mux2i_1": 8,
+            "sky130_fd_sc_hd__mux4_2": 2,
+            "sky130_fd_sc_hd__nand2_1": 75,
+            "sky130_fd_sc_hd__nand2b_1": 30,
+            "sky130_fd_sc_hd__nand3_1": 81,
+            "sky130_fd_sc_hd__nand3b_1": 7,
+            "sky130_fd_sc_hd__nand4_1": 77,
+            "sky130_fd_sc_hd__nand4b_1": 1,
+            "sky130_fd_sc_hd__nand4bb_1": 1,
+            "sky130_fd_sc_hd__nor2_1": 35,
+            "sky130_fd_sc_hd__nor2b_1": 23,
+            "sky130_fd_sc_hd__nor3_1": 13,
+            "sky130_fd_sc_hd__nor3b_1": 1,
+            "sky130_fd_sc_hd__nor4_1": 23,
+            "sky130_fd_sc_hd__nor4b_1": 3,
+            "sky130_fd_sc_hd__o2111a_1": 1,
+            "sky130_fd_sc_hd__o2111ai_1": 8,
+            "sky130_fd_sc_hd__o211a_1": 9,
+            "sky130_fd_sc_hd__o211ai_1": 32,
+            "sky130_fd_sc_hd__o21a_1": 13,
+            "sky130_fd_sc_hd__o21ai_1": 90,
+            "sky130_fd_sc_hd__o21bai_1": 11,
+            "sky130_fd_sc_hd__o221a_1": 3,
+            "sky130_fd_sc_hd__o221ai_1": 28,
+            "sky130_fd_sc_hd__o22a_1": 2,
+            "sky130_fd_sc_hd__o22ai_1": 31,
+            "sky130_fd_sc_hd__o2bb2ai_1": 24,
+            "sky130_fd_sc_hd__o311a_1": 2,
+            "sky130_fd_sc_hd__o311ai_1": 3,
+            "sky130_fd_sc_hd__o31a_1": 7,
+            "sky130_fd_sc_hd__o31ai_1": 6,
+            "sky130_fd_sc_hd__o32a_1": 1,
+            "sky130_fd_sc_hd__o32ai_1": 11,
+            "sky130_fd_sc_hd__o41ai_1": 6,
+            "sky130_fd_sc_hd__or2_1": 3,
+            "sky130_fd_sc_hd__or3_1": 5,
+            "sky130_fd_sc_hd__or4_1": 4,
+            "sky130_fd_sc_hd__or4b_1": 2,
+            "sky130_fd_sc_hd__xnor2_1": 31,
+            "sky130_fd_sc_hd__xor2_1": 30
+         }
+      }
+   },
+      "design": {
+         "num_wires":         951,
+         "num_wire_bits":     1044,
+         "num_pub_wires":     3,
+         "num_pub_wire_bits": 96,
+         "num_ports":         3,
+         "num_port_bits":     96,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         980,
+         "area":              6347.337600,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_1": 1,
+            "sky130_fd_sc_hd__a211o_1": 9,
+            "sky130_fd_sc_hd__a211oi_1": 6,
+            "sky130_fd_sc_hd__a21boi_1": 9,
+            "sky130_fd_sc_hd__a21o_1": 9,
+            "sky130_fd_sc_hd__a21oi_1": 59,
+            "sky130_fd_sc_hd__a221o_1": 5,
+            "sky130_fd_sc_hd__a221oi_1": 2,
+            "sky130_fd_sc_hd__a222oi_1": 5,
+            "sky130_fd_sc_hd__a22o_1": 1,
+            "sky130_fd_sc_hd__a22oi_1": 7,
+            "sky130_fd_sc_hd__a2bb2oi_1": 18,
+            "sky130_fd_sc_hd__a311o_1": 1,
+            "sky130_fd_sc_hd__a311oi_1": 3,
+            "sky130_fd_sc_hd__a31o_1": 6,
+            "sky130_fd_sc_hd__a31oi_1": 29,
+            "sky130_fd_sc_hd__a32o_1": 2,
+            "sky130_fd_sc_hd__a32oi_1": 5,
+            "sky130_fd_sc_hd__a41o_1": 2,
+            "sky130_fd_sc_hd__a41oi_1": 4,
+            "sky130_fd_sc_hd__and2_1": 6,
+            "sky130_fd_sc_hd__and3_1": 13,
+            "sky130_fd_sc_hd__and4_1": 3,
+            "sky130_fd_sc_hd__clkinv_1": 28,
+            "sky130_fd_sc_hd__mux2_1": 4,
+            "sky130_fd_sc_hd__mux2i_1": 8,
+            "sky130_fd_sc_hd__mux4_2": 2,
+            "sky130_fd_sc_hd__nand2_1": 75,
+            "sky130_fd_sc_hd__nand2b_1": 30,
+            "sky130_fd_sc_hd__nand3_1": 81,
+            "sky130_fd_sc_hd__nand3b_1": 7,
+            "sky130_fd_sc_hd__nand4_1": 77,
+            "sky130_fd_sc_hd__nand4b_1": 1,
+            "sky130_fd_sc_hd__nand4bb_1": 1,
+            "sky130_fd_sc_hd__nor2_1": 35,
+            "sky130_fd_sc_hd__nor2b_1": 23,
+            "sky130_fd_sc_hd__nor3_1": 13,
+            "sky130_fd_sc_hd__nor3b_1": 1,
+            "sky130_fd_sc_hd__nor4_1": 23,
+            "sky130_fd_sc_hd__nor4b_1": 3,
+            "sky130_fd_sc_hd__o2111a_1": 1,
+            "sky130_fd_sc_hd__o2111ai_1": 8,
+            "sky130_fd_sc_hd__o211a_1": 9,
+            "sky130_fd_sc_hd__o211ai_1": 32,
+            "sky130_fd_sc_hd__o21a_1": 13,
+            "sky130_fd_sc_hd__o21ai_1": 90,
+            "sky130_fd_sc_hd__o21bai_1": 11,
+            "sky130_fd_sc_hd__o221a_1": 3,
+            "sky130_fd_sc_hd__o221ai_1": 28,
+            "sky130_fd_sc_hd__o22a_1": 2,
+            "sky130_fd_sc_hd__o22ai_1": 31,
+            "sky130_fd_sc_hd__o2bb2ai_1": 24,
+            "sky130_fd_sc_hd__o311a_1": 2,
+            "sky130_fd_sc_hd__o311ai_1": 3,
+            "sky130_fd_sc_hd__o31a_1": 7,
+            "sky130_fd_sc_hd__o31ai_1": 6,
+            "sky130_fd_sc_hd__o32a_1": 1,
+            "sky130_fd_sc_hd__o32ai_1": 11,
+            "sky130_fd_sc_hd__o41ai_1": 6,
+            "sky130_fd_sc_hd__or2_1": 3,
+            "sky130_fd_sc_hd__or3_1": 5,
+            "sky130_fd_sc_hd__or4_1": 4,
+            "sky130_fd_sc_hd__or4b_1": 2,
+            "sky130_fd_sc_hd__xnor2_1": 31,
+            "sky130_fd_sc_hd__xor2_1": 30
+         }
+      }
+}
+
+64. Printing statistics.
+
+=== floatingPointAdder ===
+
+   Number of wires:                951
+   Number of wire bits:           1044
+   Number of public wires:           3
+   Number of public wire bits:      96
+   Number of ports:                  3
+   Number of port bits:             96
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                980
+     sky130_fd_sc_hd__a2111o_1       1
+     sky130_fd_sc_hd__a211o_1        9
+     sky130_fd_sc_hd__a211oi_1       6
+     sky130_fd_sc_hd__a21boi_1       9
+     sky130_fd_sc_hd__a21o_1         9
+     sky130_fd_sc_hd__a21oi_1       59
+     sky130_fd_sc_hd__a221o_1        5
+     sky130_fd_sc_hd__a221oi_1       2
+     sky130_fd_sc_hd__a222oi_1       5
+     sky130_fd_sc_hd__a22o_1         1
+     sky130_fd_sc_hd__a22oi_1        7
+     sky130_fd_sc_hd__a2bb2oi_1     18
+     sky130_fd_sc_hd__a311o_1        1
+     sky130_fd_sc_hd__a311oi_1       3
+     sky130_fd_sc_hd__a31o_1         6
+     sky130_fd_sc_hd__a31oi_1       29
+     sky130_fd_sc_hd__a32o_1         2
+     sky130_fd_sc_hd__a32oi_1        5
+     sky130_fd_sc_hd__a41o_1         2
+     sky130_fd_sc_hd__a41oi_1        4
+     sky130_fd_sc_hd__and2_1         6
+     sky130_fd_sc_hd__and3_1        13
+     sky130_fd_sc_hd__and4_1         3
+     sky130_fd_sc_hd__clkinv_1      28
+     sky130_fd_sc_hd__mux2_1         4
+     sky130_fd_sc_hd__mux2i_1        8
+     sky130_fd_sc_hd__mux4_2         2
+     sky130_fd_sc_hd__nand2_1       75
+     sky130_fd_sc_hd__nand2b_1      30
+     sky130_fd_sc_hd__nand3_1       81
+     sky130_fd_sc_hd__nand3b_1       7
+     sky130_fd_sc_hd__nand4_1       77
+     sky130_fd_sc_hd__nand4b_1       1
+     sky130_fd_sc_hd__nand4bb_1      1
+     sky130_fd_sc_hd__nor2_1        35
+     sky130_fd_sc_hd__nor2b_1       23
+     sky130_fd_sc_hd__nor3_1        13
+     sky130_fd_sc_hd__nor3b_1        1
+     sky130_fd_sc_hd__nor4_1        23
+     sky130_fd_sc_hd__nor4b_1        3
+     sky130_fd_sc_hd__o2111a_1       1
+     sky130_fd_sc_hd__o2111ai_1      8
+     sky130_fd_sc_hd__o211a_1        9
+     sky130_fd_sc_hd__o211ai_1      32
+     sky130_fd_sc_hd__o21a_1        13
+     sky130_fd_sc_hd__o21ai_1       90
+     sky130_fd_sc_hd__o21bai_1      11
+     sky130_fd_sc_hd__o221a_1        3
+     sky130_fd_sc_hd__o221ai_1      28
+     sky130_fd_sc_hd__o22a_1         2
+     sky130_fd_sc_hd__o22ai_1       31
+     sky130_fd_sc_hd__o2bb2ai_1     24
+     sky130_fd_sc_hd__o311a_1        2
+     sky130_fd_sc_hd__o311ai_1       3
+     sky130_fd_sc_hd__o31a_1         7
+     sky130_fd_sc_hd__o31ai_1        6
+     sky130_fd_sc_hd__o32a_1         1
+     sky130_fd_sc_hd__o32ai_1       11
+     sky130_fd_sc_hd__o41ai_1        6
+     sky130_fd_sc_hd__or2_1          3
+     sky130_fd_sc_hd__or3_1          5
+     sky130_fd_sc_hd__or4_1          4
+     sky130_fd_sc_hd__or4b_1         2
+     sky130_fd_sc_hd__xnor2_1       31
+     sky130_fd_sc_hd__xor2_1        30
+
+   Chip area for module '\floatingPointAdder': 6347.337600
+     of which used for sequential elements: 0.000000 (0.00%)
+
+65. Executing Verilog backend.
+Dumping module `\floatingPointAdder'.
+
+66. Executing JSON backend.

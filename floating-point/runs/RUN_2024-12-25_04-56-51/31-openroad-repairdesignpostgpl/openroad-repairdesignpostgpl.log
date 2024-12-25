@@ -1,0 +1,63 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/27-openroad-globalplacement/floatingPointAdder.odb'…
+Reading design constraints file at './mult.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[WARNING STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[INFO] Setting RC values…
+[INFO RSZ-0027] Inserted 64 input buffers.
+[INFO RSZ-0028] Inserted 32 output buffers.
+[INFO RSZ-0058] Using max wire length 6335um.
+Iteration | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------
+        0 |       0 |       0 |             0 |      1140
+      100 |       6 |       0 |             0 |      1040
+      200 |      22 |       0 |             0 |       940
+      300 |      81 |       0 |             0 |       840
+      400 |     131 |       0 |             0 |       740
+      500 |     173 |       0 |             0 |       640
+      600 |     211 |       0 |             0 |       540
+      700 |     268 |       0 |             1 |       440
+      800 |     316 |       0 |             1 |       340
+      900 |     361 |       8 |             5 |       240
+     1000 |     407 |       8 |             5 |       140
+     1100 |     467 |       8 |             5 |        40
+    final |     467 |       8 |             5 |         0
+---------------------------------------------------------
+[INFO RSZ-0034] Found 5 slew violations.
+[INFO RSZ-0036] Found 4 capacitance violations.
+[INFO RSZ-0038] Inserted 8 buffers in 5 nets.
+[INFO RSZ-0039] Resized 467 instances.
+Placement Analysis
+---------------------------------
+total displacement       8271.1 u
+average displacement        6.1 u
+max displacement           61.7 u
+original HPWL           22366.8 u
+legalized HPWL          33928.6 u
+delta HPWL                   52 %
+
+[INFO DPL-0020] Mirrored 469 instances
+[INFO DPL-0021] HPWL before           33928.6 u
+[INFO DPL-0022] HPWL after            33212.9 u
+[INFO DPL-0023] HPWL delta               -2.1 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                86     322.81
+  Tap cell                                180     225.22
+  Timing Repair Buffer                    104     641.87
+  Inverter                                 28     112.61
+  Multi-Input combinational cell          952    9778.13
+  Total                                  1350   11080.63
+Writing OpenROAD database to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/31-openroad-repairdesignpostgpl/floatingPointAdder.odb'…
+Writing netlist to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/31-openroad-repairdesignpostgpl/floatingPointAdder.nl.v'…
+Writing powered netlist to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/31-openroad-repairdesignpostgpl/floatingPointAdder.pnl.v'…
+Writing layout to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/31-openroad-repairdesignpostgpl/floatingPointAdder.def'…
+Writing timing constraints to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/31-openroad-repairdesignpostgpl/floatingPointAdder.sdc'…

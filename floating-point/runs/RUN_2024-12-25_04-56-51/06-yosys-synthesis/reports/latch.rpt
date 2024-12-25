@@ -1,0 +1,6 @@
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\floatingPointAdder.\result' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+No latch inferred for signal `\floatingPointAdder.\normalized_sum' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+No latch inferred for signal `\floatingPointAdder.\final_exp' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.
+No latch inferred for signal `\floatingPointAdder.\final_sign' from process `\floatingPointAdder.$proc$./floatingPointAdder.v:43$23'.

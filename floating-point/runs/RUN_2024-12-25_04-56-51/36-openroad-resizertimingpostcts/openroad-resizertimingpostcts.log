@@ -1,0 +1,76 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/shehab/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/33-openroad-detailedplacement/floatingPointAdder.odb'…
+Reading design constraints file at './mult.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[WARNING STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[WARNING STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[INFO] Setting RC values…
+[INFO RSZ-0094] Found 22 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 22 out of 22 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |    WNS   |   TNS      |  Viol  | Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |            | Endpts | Endpt
+---------------------------------------------------------------------------------------------------
+        0 |       0 |       0 |        0 |      0 |     0 |   -0.157 |       -2.1 |     22 | result[16]
+        4 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     20 | result[16]
+        5 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     19 | result[16]
+        6 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     18 | result[16]
+        7 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     17 | result[16]
+        8 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     16 | result[16]
+        9 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     15 | result[16]
+       10 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     15 | result[16]
+       10 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     14 | result[16]
+       11 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     13 | result[16]
+       12 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     12 | result[16]
+       13 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     11 | result[16]
+       14 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |     10 | result[16]
+       15 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      9 | result[16]
+       16 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      8 | result[16]
+       17 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      7 | result[16]
+       18 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      6 | result[16]
+       19 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      5 | result[16]
+       20 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      5 | result[16]
+       20 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      4 | result[16]
+       21 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      3 | result[16]
+       22 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      2 | result[16]
+       23 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      1 | result[16]
+       24 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      0 | result[16]
+       25 |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      0 | result[16]
+    final |       0 |       0 |       10 |      0 |     1 |    0.083 |        0.0 |      0 | result[16]
+---------------------------------------------------------------------------------------------------
+[INFO RSZ-0040] Inserted 8 buffers.
+[INFO RSZ-0043] Swapped pins on 1 instances.
+[INFO RSZ-0033] No hold violations found.
+Placement Analysis
+---------------------------------
+total displacement        644.9 u
+average displacement        0.5 u
+max displacement           37.7 u
+original HPWL           33276.7 u
+legalized HPWL          34866.2 u
+delta HPWL                    5 %
+
+[INFO DPL-0020] Mirrored 468 instances
+[INFO DPL-0021] HPWL before           34866.2 u
+[INFO DPL-0022] HPWL after            34146.1 u
+[INFO DPL-0023] HPWL delta               -2.1 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                86     322.81
+  Tap cell                                180     225.22
+  Timing Repair Buffer                    112     714.44
+  Inverter                                 28     112.61
+  Multi-Input combinational cell          952    9778.13
+  Total                                  1358   11153.20
+Writing OpenROAD database to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/36-openroad-resizertimingpostcts/floatingPointAdder.odb'…
+Writing netlist to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/36-openroad-resizertimingpostcts/floatingPointAdder.nl.v'…
+Writing powered netlist to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/36-openroad-resizertimingpostcts/floatingPointAdder.pnl.v'…
+Writing layout to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/36-openroad-resizertimingpostcts/floatingPointAdder.def'…
+Writing timing constraints to '/home/shehab/Desktop/ArithmeticMania/floating-point/runs/RUN_2024-12-25_04-56-51/36-openroad-resizertimingpostcts/floatingPointAdder.sdc'…
