@@ -1,5 +1,4 @@
 module floatingPointAdder (
-    input wire clk, rst,
     input wire [31:0] x,
     input wire [31:0] y,
     output reg [31:0] result,
@@ -118,6 +117,5 @@ module floatingPointAdder (
         overflow = 1'b0; // No overflow
       end
     end
-     overflow=c_overflow;
   end
 endmodule

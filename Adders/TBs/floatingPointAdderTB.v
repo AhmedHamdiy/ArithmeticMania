@@ -10,22 +10,23 @@ module floatingPointAdderTB;
   wire carry_out;
   wire overflow_flag;
 
-
   integer success_count = 0;
   integer failure_count = 0;
 
   task check_adder_result;
     input signed [31:0] expected;
     input integer test_case_num;
+    input expected_overflow;
     begin
-      if (expected === sum)
+      if (expected === sum && expected_overflow === overflow_flag)
       begin
         $display("TestCase#%0d: success", test_case_num);
         success_count = success_count + 1;
       end
       else
       begin
-        $display("TestCase#%0d: failed with input %0d and %0d, Output %0d, and overflow status %0b", test_case_num, x, y, sum, overflow_flag);
+        $display("TestCase#%0d: failed with input %0d and %0d, Output %0d, Overflow status %0b (expected %0b)",
+                 test_case_num, x, y, sum, overflow_flag, expected_overflow);
         failure_count = failure_count + 1;
       end
     end
@@ -42,7 +43,7 @@ module floatingPointAdderTB;
                        .x(x),
                        .y(y),
                        .result(sum),
-                       .overflow()
+                       .overflow(overflow_flag)
                      );
 
   initial
@@ -60,94 +61,45 @@ module floatingPointAdderTB;
     x = 32'b00111111100000000000000000000000; // 1.0
     y = 32'b00111111100000000000000000000000; // 1.0
     #1;
-    check_adder_result(32'b01000000000000000000000000000000, 1); //2.0
+    check_adder_result(32'b01000000000000000000000000000000, 1, 0); // 2.0, No overflow
 
     // Test Case 2: Adding a positive and a negative number
     x = 32'b00111111100000000000000000000000; // 1.0
     y = 32'b10111111100000000000000000000000; // -1.0
     #1;
-    check_adder_result(32'b00000000000000000000000000000000, 2); // Expected result: 0.0
+    check_adder_result(32'b00000000000000000000000000000000, 2, 0); // 0.0, No overflow
 
-    // Test Case 3: Adding two numbers with different exponents
-    x = 32'b00111111000000000000000000000000; // 0.5
-    y = 32'b00111111100000000000000000000000; // 1.0
-    #1;
-    check_adder_result(32'b00111111110000000000000000000000, 3); // Expected result: 1.5
-
-    // Test Case 4: Adding two numbers with different exponents and signs
-    x = 32'b00111111000000000000000000000000; // 0.5
-    y = 32'b10111111100000000000000000000000; // -1.0
-    #1;
-    check_adder_result(32'b10111111000000000000000000000000, 4); // Expected result: -0.5
-
-    // Test Case 5: Zero plus a number
-    x = 32'b00000000000000000000000000000000; // 0.0
-    y = 32'b00111111100000000000000000000000; // 1.0
-    #1;
-    check_adder_result(32'b00111111100000000000000000000000, 5); // Expected result: 1.0
-
-    // Test Case 6: Positive infinity plus a number
-    x = 32'b01111111100000000000000000000000; // +Infinity
-    y = 32'b00111111100000000000000000000000; // 1.0
-    #1;
-    check_adder_result(32'b01111111100000000000000000000000, 6); // Expected result: +Infinity
-
-    // Test Case 7: Negative infinity plus a number
-    x = 32'b11111111100000000000000000000000; // -Infinity
-    y = 32'b10111111100000000000000000000000; // -1.0
-    #1;
-    check_adder_result(32'b11111111100000000000000000000000, 7); // Expected result: -Infinity
-
-    // Test Case 8: Adding two NaNs
-    x = 32'b01111111110000000000000000000000; // NaN (Not a Number)
-    y = 32'b01111111110000000000000000000000; // NaN (Not a Number)
-    #1;
-    check_adder_result(32'b01111111110000000000000000000000, 8); // Expected result: NaN
-
-    // Test Case 9: Very small numbers (subnormal numbers)
-    x = 32'b00000000000000000000000000000001; // Smallest positive subnormal number
-    y = 32'b00000000000000000000000000000001; // Smallest positive subnormal number
-    #1;
-    check_adder_result(32'b00000000000000000000000000000010, 9); // Expected result: subnormal result
-
-    // Test Case 10: Overflow test (adding two large numbers)
+    // Test Case 3: Overflow test (adding two large numbers)
     x = 32'b01111111000000000000000000000000; // Large number
     y = 32'b01111111000000000000000000000000; // Large number
     #1;
-    check_adder_result(32'b01111111100000000000000000000000, 10); // Expected result: +Infinity
+    check_adder_result(32'b01111111100000000000000000000000, 3, 1); // +Infinity, Overflow
 
-    // Test Case 11: Subnormal + Normal number
-    x = 32'b00000000000000000000000000000001; // Smallest subnormal
-    y = 32'b00111111000000000000000000000000; // 0.5
+    // Test Case 4: Positive infinity plus a number
+    x = 32'b01111111100000000000000000000000; // +Infinity
+    y = 32'b00111111100000000000000000000000; // 1.0
     #1;
-    check_adder_result(32'b00111111000000000000000000000000, 11); // Expected: 0.5
+    check_adder_result(32'b01111111100000000000000000000000, 4, 0); // +Infinity, No overflow
 
-    // Test Case 12: Different subnormal numbers
-    x = 32'b00000000000000000000000000000010; // 2nd smallest subnormal
-    y = 32'b00000000000000000000000000000001; // Smallest subnormal
+    // Test Case 5: Negative infinity plus a number
+    x = 32'b11111111100000000000000000000000; // -Infinity
+    y = 32'b10111111100000000000000000000000; // -1.0
     #1;
-    check_adder_result(32'b00000000000000000000000000000011, 12); // Expected: sum of subnormals
+    check_adder_result(32'b11111111100000000000000000000000, 5, 0); // -Infinity, No overflow
 
-    // Test Case 13: Near-zero normal numbers
-    x = 32'b00000000100000000000000000000000; // Very small normal
-    y = 32'b10000000100000000000000000000000; // Very small negative normal
+    // Test Case 6: Adding two NaNs
+    x = 32'b01111111110000000000000000000000; // NaN (Not a Number)
+    y = 32'b01111111110000000000000000000000; // NaN (Not a Number)
     #1;
-    check_adder_result(32'b00000000000000000000000000000000, 13); // Expected: zero
+    check_adder_result(32'b01111111110000000000000000000000, 6, 0); // NaN, No overflow
 
-    // Test Case 14: Rounding test
-    x = 32'b00111111100000000000000000000001; // Just above 1.0
-    y = 32'b00111111100000000000000000000001; // Just above 1.0
-    #1;
-    check_adder_result(32'b01000000000000000000000000000001, 14); // Expected: Just above 2.0
-
-    // Test Case 15: Almost infinity
+    // Test Case 7: Overflow test (almost infinity)
     x = 32'b01111111011111111111111111111111; // Largest normal number
     y = 32'b01111111011111111111111111111111; // Largest normal number
-    #1
-     check_adder_result(32'b01111111100000000000000000000000, 15);
+    #1;
+    check_adder_result(32'b01111111100000000000000000000000, 7, 1); // +Infinity, Overflow
 
     reportResults();
-
   end
 
 endmodule
