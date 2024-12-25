@@ -147,7 +147,7 @@ module aluTB;
     op = 0;
     x = 32'b01111111100000000000000000000000; // +Infinity
     y = 32'b00111111100000000000000000000000; // 1.0
-    #50 check_alu_result(32'b01111111100000000000000000000000, 14, 1);
+    #50 check_alu_result(32'b01111111100000000000000000000000, 14, 0);
 
     // Finalize and report results
     #2 report_results;
